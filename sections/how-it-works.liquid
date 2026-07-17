@@ -1,0 +1,69 @@
+<section class="section{% if section.settings.soft_background %} section--soft{% endif %}" id="how-it-works">
+  <div class="container">
+    <div class="section-head section-head--center">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="lede">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+    <div class="grid grid--3 steps">
+      {%- for block in section.blocks -%}
+        <div class="step-card" {{ block.shopify_attributes }}>
+          <span class="step-card__number" aria-hidden="true">{{ forloop.index }}</span>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Easy as" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Three steps. One of them is walking away." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "checkbox", "id": "soft_background", "label": "Soft background", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Click on" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Click the sprayer straight onto any garden hose. No mixing, no measuring, no gear." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "How it works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "heading": "Click on",
+            "text": "Click the sprayer straight onto any garden hose. No mixing, no measuring, no gear."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "heading": "Soak",
+            "text": "Soak the house, fence, deck or path until it's properly wet. That's the whole job."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "heading": "Walk away",
+            "text": "The weather does the slow work. Moss, mould and grime fade over the following weeks — and stay gone for ages."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

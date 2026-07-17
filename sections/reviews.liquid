@@ -1,0 +1,121 @@
+{%- comment -%}
+  Social proof section. Review cards are clearly-labelled placeholders —
+  never fabricate reviews. Structured to be replaced by a Judge.me /
+  Shopify Reviews app embed: paste the app's embed into the app block area
+  or enable an app block here once installed.
+{%- endcomment -%}
+<section class="section{% if section.settings.soft_background %} section--soft{% endif %}">
+  <div class="container">
+    <div class="section-head section-head--center">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="lede">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="grid grid--3">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'review' -%}
+            <blockquote class="review-card" {{ block.shopify_attributes }}>
+              <div class="review-card__stars" aria-label="{{ block.settings.stars }} out of 5 stars">
+                {%- for i in (1..5) -%}
+                  {%- if i <= block.settings.stars -%}{% render 'icon', name: 'star', size: 18 %}{%- endif -%}
+                {%- endfor -%}
+              </div>
+              <p class="review-card__quote">{{ block.settings.quote }}</p>
+              <footer class="review-card__meta">{{ block.settings.attribution }}</footer>
+            </blockquote>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_placeholder_note -%}
+      <p class="review-placeholder-note small muted">{{ section.settings.placeholder_note }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Word of mouth" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Kiwis are saying" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "checkbox", "id": "soft_background", "label": "Soft background", "default": false },
+    {
+      "type": "checkbox",
+      "id": "show_placeholder_note",
+      "label": "Show placeholder note",
+      "info": "Turn off once real reviews are flowing through a reviews app.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "placeholder_note",
+      "label": "Placeholder note",
+      "default": "Example reviews shown for layout — real customer reviews will appear here once collected via the reviews app."
+    }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "review",
+      "name": "Review card (placeholder)",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "“Sample review — replace with a real customer quote from your reviews app.”"
+        },
+        {
+          "type": "text",
+          "id": "attribution",
+          "label": "Attribution",
+          "default": "Example customer · Placeholder"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "quote": "“Sample review — replace with a real customer quote once reviews are collected.”",
+            "attribution": "Example customer · Placeholder"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "“Sample review — replace with a real customer quote once reviews are collected.”",
+            "attribution": "Example customer · Placeholder"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "“Sample review — replace with a real customer quote once reviews are collected.”",
+            "attribution": "Example customer · Placeholder"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

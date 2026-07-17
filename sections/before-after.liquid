@@ -1,0 +1,83 @@
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="lede">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="grid {% if section.blocks.size > 1 %}grid--2{% endif %}">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <before-after class="ba-slider">
+            <div class="ba-slider__before">
+              {%- if block.settings.before_image != blank -%}
+                <img
+                  src="{{ block.settings.before_image | image_url: width: 1200 }}"
+                  srcset="{{ block.settings.before_image | image_url: width: 700 }} 700w, {{ block.settings.before_image | image_url: width: 1200 }} 1200w"
+                  sizes="(min-width: 900px) 48vw, 100vw"
+                  width="1200" height="750" loading="lazy"
+                  alt="Before: {{ block.settings.caption | escape }}"
+                >
+              {%- else -%}
+                {% render 'ph-image', label: block.settings.before_label, ratio: '16x9', tone: 'navy' %}
+              {%- endif -%}
+            </div>
+            <div class="ba-slider__after">
+              {%- if block.settings.after_image != blank -%}
+                <img
+                  src="{{ block.settings.after_image | image_url: width: 1200 }}"
+                  srcset="{{ block.settings.after_image | image_url: width: 700 }} 700w, {{ block.settings.after_image | image_url: width: 1200 }} 1200w"
+                  sizes="(min-width: 900px) 48vw, 100vw"
+                  width="1200" height="750" loading="lazy"
+                  alt="After: {{ block.settings.caption | escape }}"
+                >
+              {%- else -%}
+                {% render 'ph-image', label: block.settings.after_label, ratio: '16x9' %}
+              {%- endif -%}
+            </div>
+            <span class="ba-slider__label ba-slider__label--before">Before</span>
+            <span class="ba-slider__label ba-slider__label--after">After</span>
+            <div class="ba-slider__handle"></div>
+            <label class="visually-hidden" for="BA-{{ block.id }}">{{ 'accessibility.before_after_handle' | t }}</label>
+            <input id="BA-{{ block.id }}" class="ba-slider__range" type="range" min="0" max="100" value="50">
+          </before-after>
+          {%- if block.settings.caption != blank -%}
+            <p class="small muted text-center" style="margin-top: var(--space-2);">{{ block.settings.caption }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Before / after slider",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "The receipts" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Same fence. Zero scrubbing." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Drag the handle. This is what the weather does when you give it the right head start." }
+  ],
+  "blocks": [
+    {
+      "type": "comparison",
+      "name": "Before / after pair",
+      "settings": [
+        { "type": "image_picker", "id": "before_image", "label": "Before photo" },
+        { "type": "image_picker", "id": "after_image", "label": "After photo", "info": "Shoot both from the same angle — see ASSETS-NEEDED.md." },
+        { "type": "text", "id": "before_label", "label": "Placeholder label (before)", "default": "BEFORE — mossy fence, same angle" },
+        { "type": "text", "id": "after_label", "label": "Placeholder label (after)", "default": "AFTER — clean fence, same angle" },
+        { "type": "text", "id": "caption", "label": "Caption", "default": "Fence, 8 weeks after one soak" }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Before / after slider",
+      "blocks": [{ "type": "comparison" }]
+    }
+  ]
+}
+{% endschema %}

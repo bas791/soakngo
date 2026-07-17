@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "helper-1": {
+          "type": "helper",
+          "settings": {
+            "job": "Fence, deck, path or patio",
+            "pick": "2L Hose-End Sprayer",
+            "why": "Clicks onto the hose, no mixing. The starting point."
+          }
+        },
+        "helper-2": {
+          "type": "helper",
+          "settings": {
+            "job": "Topping up through the year",
+            "pick": "2L Refill",
+            "why": "Cheapest on Subscribe & Save — never run out."
+          }
+        },
+        "helper-3": {
+          "type": "helper",
+          "settings": {
+            "job": "The whole house",
+            "pick": "5L Concentrate",
+            "why": "Value tier for bigger properties."
+          }
+        },
+        "helper-4": {
+          "type": "helper",
+          "settings": {
+            "job": "Lifestyle block or serious DIY",
+            "pick": "20L Concentrate",
+            "why": "Trade tier. Bring a mate."
+          }
+        }
+      },
+      "block_order": ["helper-1", "helper-2", "helper-3", "helper-4"],
+      "settings": {}
+    },
+    "calculator": {
+      "type": "coverage-calculator",
+      "settings": {}
+    },
+    "comparison-teaser": {
+      "type": "comparison-table",
+      "blocks": {
+        "row-1": { "type": "row", "settings": { "label": "No bleach", "us": "tick", "a": "cross", "b": "tick" } },
+        "row-2": { "type": "row", "settings": { "label": "No mixing — clicks onto the hose", "us": "tick", "a": "cross", "b": "cross" } },
+        "row-3": { "type": "row", "settings": { "label": "Made by professional exterior cleaners", "us": "tick", "a": "cross", "b": "cross" } }
+      },
+      "block_order": ["row-1", "row-2", "row-3"],
+      "settings": {
+        "kicker": "Still comparing?",
+        "heading": "The short version",
+        "subheading": "",
+        "teaser_rows": 0,
+        "cta_label": "See the full comparison",
+        "cta_link": "/pages/soak-n-go-vs-the-others",
+        "soft_background": true
+      }
+    }
+  },
+  "order": ["main", "calculator", "comparison-teaser"]
+}

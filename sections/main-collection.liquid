@@ -1,0 +1,129 @@
+<div class="container">
+  <header class="collection-header">
+    <div class="section-head" style="margin-bottom: var(--space-5);">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h1>{{ collection.title }}</h1>
+      {%- if section.settings.show_description and collection.description != blank -%}
+        <div class="lede">{{ collection.description }}</div>
+      {%- elsif section.settings.intro != blank -%}
+        <p class="lede">{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} "Which size do I need?" decision helper — the range as a
+      decision, not a grid dump. Blocks map a job to a pick. {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="size-helper" style="margin-bottom: var(--space-6);">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.product != blank -%}
+            <a class="size-helper__card" href="{{ block.settings.product.url }}" {{ block.shopify_attributes }}>
+          {%- else -%}
+            <div class="size-helper__card" {{ block.shopify_attributes }}>
+          {%- endif -%}
+            <span class="size-helper__job">{{ block.settings.job }}</span>
+            <span class="size-helper__pick">{{ block.settings.pick }}</span>
+            <span class="small muted">{{ block.settings.why }}</span>
+          {%- if block.settings.product != blank -%}</a>{%- else -%}</div>{%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </header>
+
+  {%- paginate collection.products by 12 -%}
+    <div class="collection-grid">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product, show_cta: true %}
+      {%- else -%}
+        <p class="muted">No products here yet — they're coming.</p>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <nav class="pagination" aria-label="Pagination">
+        {%- if paginate.previous -%}
+          <a href="{{ paginate.previous.url }}">{{ 'general.pagination.previous' | t }}</a>
+        {%- endif -%}
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+          {%- elsif part.title == paginate.current_page -%}
+            <span aria-current="page">{{ part.title }}</span>
+          {%- else -%}
+            <span>{{ part.title }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }}</a>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "One formula, four sizes" },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro (used when collection has no description)",
+      "default": "Same professional-grade formula in every bottle — the only question is how much of New Zealand you're planning to clean."
+    },
+    { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "helper",
+      "name": "Size helper card",
+      "settings": [
+        { "type": "text", "id": "job", "label": "The job", "default": "Fence, deck or path" },
+        { "type": "text", "id": "pick", "label": "The pick", "default": "2L Hose-End Sprayer" },
+        { "type": "text", "id": "why", "label": "Why", "default": "Clicks onto the hose. Done before the jug's boiled." },
+        { "type": "product", "id": "product", "label": "Links to product" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Collection page",
+      "blocks": [
+        {
+          "type": "helper",
+          "settings": {
+            "job": "Fence, deck, path or patio",
+            "pick": "2L Hose-End Sprayer",
+            "why": "Clicks onto the hose, no mixing. The starting point."
+          }
+        },
+        {
+          "type": "helper",
+          "settings": {
+            "job": "Topping up through the year",
+            "pick": "2L Refill",
+            "why": "Cheapest on Subscribe & Save — never run out."
+          }
+        },
+        {
+          "type": "helper",
+          "settings": {
+            "job": "The whole house",
+            "pick": "5L Concentrate",
+            "why": "Value tier for bigger properties."
+          }
+        },
+        {
+          "type": "helper",
+          "settings": {
+            "job": "Lifestyle block or serious DIY",
+            "pick": "20L Concentrate",
+            "why": "Trade tier. Bring a mate."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,135 @@
+{%- comment -%}
+  Signature homepage hero. The scene is an inline SVG animated with CSS
+  (see base.css "Hero" block): a yellow soak band sweeps the fence, day
+  turns to night and back, and the grime fades as the weather does the
+  work. prefers-reduced-motion gets the clean end-state, static.
+{%- endcomment -%}
+<section class="hero-soak">
+  <div class="container hero-soak__inner">
+    <div class="hero-soak__copy">
+      {%- if section.settings.kicker != blank -%}
+        <p class="kicker">{{ section.settings.kicker }}</p>
+      {%- endif -%}
+      <h1 class="display">{{ section.settings.heading }}</h1>
+      {%- if section.settings.show_no_list -%}
+        <ul class="hero-soak__no-list" aria-label="What Soak n Go doesn't need">
+          <li>No acid</li>
+          <li>No bleach</li>
+          <li>No scrub</li>
+          <li>No rinse</li>
+        </ul>
+      {%- endif -%}
+      <p class="lede">{{ section.settings.subheading }}</p>
+      <div class="hero-soak__ctas" style="margin-top: var(--space-5);">
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--large">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.secondary_label != blank -%}
+          <a href="{{ section.settings.secondary_link }}" class="btn btn--secondary btn--large">{{ section.settings.secondary_label }}</a>
+        {%- endif -%}
+      </div>
+      <div class="trust-strip">
+        {%- if settings.badge_1 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'pin', size: 16 %}{{ settings.badge_1 }}</span>{%- endif -%}
+        {%- if settings.badge_3 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'shield', size: 16 %}{{ settings.badge_3 }}</span>{%- endif -%}
+      </div>
+    </div>
+
+    <div class="hero-soak__scene" aria-hidden="true">
+      {%- if section.settings.hero_image != blank -%}
+        <img
+          src="{{ section.settings.hero_image | image_url: width: 1200 }}"
+          srcset="{{ section.settings.hero_image | image_url: width: 700 }} 700w, {{ section.settings.hero_image | image_url: width: 1200 }} 1200w"
+          sizes="(min-width: 900px) 48vw, 100vw"
+          width="1200"
+          height="900"
+          alt="{{ section.settings.hero_image.alt | escape }}"
+          fetchpriority="high"
+        >
+      {%- else -%}
+        <svg class="soak-scene" viewBox="0 0 800 600" role="img" aria-label="Illustration: Soak n Go applied to a fence; grime fades away over a day and night as the weather does the work.">
+          <!-- Day sky -->
+          <rect width="800" height="600" fill="#bfe0f2"/>
+          <!-- Night overlay -->
+          <rect class="scene-night" width="800" height="600" fill="#122a44"/>
+          <!-- Sun (arcs across via rotation) -->
+          <g class="scene-sun">
+            <circle cx="400" cy="120" r="46" fill="#f5c518"/>
+          </g>
+          <!-- Moon -->
+          <g class="scene-moon">
+            <circle cx="400" cy="120" r="34" fill="#eef4f9"/>
+            <circle cx="416" cy="110" r="30" fill="#122a44" opacity="0.9"/>
+          </g>
+          <!-- Hills -->
+          <path d="M0 430 Q200 360 420 420 T800 410 V600 H0 Z" fill="#7fb069"/>
+          <!-- House -->
+          <g>
+            <rect x="120" y="280" width="360" height="200" fill="#e9eef3"/>
+            <polygon points="100,280 300,190 500,280" fill="#1a3a5c"/>
+            <rect x="160" y="330" width="70" height="70" fill="#1e6fa8"/>
+            <rect x="380" y="330" width="70" height="70" fill="#1e6fa8"/>
+            <rect x="270" y="360" width="60" height="120" fill="#16324e"/>
+          </g>
+          <!-- Fence -->
+          <g>
+            <rect x="500" y="360" width="290" height="130" fill="#dfe7ee"/>
+            <rect x="500" y="360" width="290" height="12" fill="#c3d2de"/>
+            <line x1="545" y1="372" x2="545" y2="490" stroke="#c3d2de" stroke-width="4"/>
+            <line x1="595" y1="372" x2="595" y2="490" stroke="#c3d2de" stroke-width="4"/>
+            <line x1="645" y1="372" x2="645" y2="490" stroke="#c3d2de" stroke-width="4"/>
+            <line x1="695" y1="372" x2="695" y2="490" stroke="#c3d2de" stroke-width="4"/>
+            <line x1="745" y1="372" x2="745" y2="490" stroke="#c3d2de" stroke-width="4"/>
+          </g>
+          <!-- Grime (fades over the cycle) -->
+          <g class="scene-grime">
+            <path d="M130 460 q30 -30 70 -8 q35 18 60 5 q20 22 -15 26 q-60 8 -115 -23z" fill="#5a6b4a" opacity="0.75"/>
+            <path d="M360 430 q25 -18 55 -2 q22 12 12 28 q-40 14 -67 -26z" fill="#4f6142" opacity="0.7"/>
+            <path d="M510 440 q40 -24 80 -4 q45 20 90 8 q30 30 -20 36 q-95 12 -150 -40z" fill="#5a6b4a" opacity="0.8"/>
+            <circle cx="200" cy="320" r="18" fill="#4f6142" opacity="0.55"/>
+            <circle cx="440" cy="310" r="14" fill="#5a6b4a" opacity="0.5"/>
+            <circle cx="660" cy="400" r="16" fill="#4f6142" opacity="0.6"/>
+          </g>
+          <!-- Soak band (yellow sweep at the start of the loop) -->
+          <g class="scene-soak-band">
+            <rect x="-80" y="180" width="200" height="320" fill="#f5c518" opacity="0.45" rx="24"/>
+            <rect x="-40" y="180" width="60" height="320" fill="#f5c518" opacity="0.7" rx="18"/>
+          </g>
+          <!-- Sparkles (appear once clean) -->
+          <g class="scene-sparkle" fill="#f5c518">
+            <path d="M240 260 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z"/>
+            <path d="M560 330 l5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5z"/>
+            <path d="M690 440 l5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5z"/>
+          </g>
+        </svg>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero — Soak & walk away",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "NZ-made DIY exterior cleaner" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Soak once, walk away." },
+    { "type": "checkbox", "id": "show_no_list", "label": "Show the four No pills", "default": true },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Click Soak n Go onto your hose, soak the house, fence, deck or path — then let the weather do the work. Moss, mould and grime fade over the following weeks and stay gone."
+    },
+    { "type": "text", "id": "cta_label", "label": "Primary button label", "default": "Shop Soak n Go" },
+    { "type": "url", "id": "cta_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "How it works" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary button link", "default": "/#how-it-works" },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Replace animation with a photo",
+      "info": "Optional. Recommended 1200 × 900px — sprayer clicked onto hose, house in the background."
+    }
+  ],
+  "presets": [{ "name": "Hero — Soak & walk away" }]
+}
+{% endschema %}

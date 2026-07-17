@@ -1,0 +1,42 @@
+<section class="section section--navy">
+  <div class="container" style="display: grid; gap: var(--space-6); align-items: center; grid-template-columns: 1fr;">
+    <div style="max-width: 46rem;">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      <p class="lede" style="margin-top: var(--space-3);">{{ section.settings.text }}</p>
+      <ul class="tick-list" style="margin-top: var(--space-4); max-width: 30rem;">
+        {%- if section.settings.point_1 != blank -%}<li>{% render 'icon', name: 'tick', size: 16 %}{{ section.settings.point_1 }}</li>{%- endif -%}
+        {%- if section.settings.point_2 != blank -%}<li>{% render 'icon', name: 'tick', size: 16 %}{{ section.settings.point_2 }}</li>{%- endif -%}
+        {%- if section.settings.point_3 != blank -%}<li>{% render 'icon', name: 'tick', size: 16 %}{{ section.settings.point_3 }}</li>{%- endif -%}
+      </ul>
+      {%- if section.settings.cta_label != blank -%}
+        <p style="margin-top: var(--space-5);">
+          <a href="{{ section.settings.cta_link }}" class="btn btn--primary btn--large">{{ section.settings.cta_label }}</a>
+        </p>
+      {%- endif -%}
+      <p class="small" style="margin-top: var(--space-3); color: rgba(255,255,255,0.7);">{{ settings.subscribe_reassurance }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Subscribe & Save banner",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Subscribe & Save" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Never run out. Never pay full price." },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Put your refills on autopilot. Every delivery is discounted — in dollars you can actually see — and it turns up before the green stuff does."
+    },
+    { "type": "text", "id": "point_1", "label": "Point 1", "default": "Save on every single delivery" },
+    { "type": "text", "id": "point_2", "label": "Point 2", "default": "Pick your rhythm — most homes suit every 3 months" },
+    { "type": "text", "id": "point_3", "label": "Point 3", "default": "Pause, skip or cancel anytime from your email" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Set up Subscribe & Save" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Subscribe & Save banner" }]
+}
+{% endschema %}

@@ -1,0 +1,130 @@
+<div class="container cart-page" id="MainCart-{{ section.id }}">
+  <h1 style="margin-bottom: var(--space-5);">{{ 'cart.title' | t }}</h1>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="cart-empty">
+      <h2>{{ 'cart.empty' | t }}</h2>
+      <p class="muted">Your house, on the other hand, is probably not.</p>
+      <a href="{{ section.settings.empty_cart_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--large">{{ 'cart.empty_link' | t }}</a>
+    </div>
+  {%- else -%}
+    <div class="cart-page__grid">
+      <div>
+        {% render 'free-shipping-bar' %}
+
+        <cart-items data-section-id="{{ section.id }}">
+          {% render 'cart-line-items' %}
+        </cart-items>
+
+        {%- comment -%} In-cart upsell slot {%- endcomment -%}
+        {%- assign upsell = section.settings.upsell_product -%}
+        {%- if upsell != blank and upsell.available -%}
+          {%- assign already_in_cart = false -%}
+          {%- for item in cart.items -%}
+            {%- if item.product_id == upsell.id -%}{%- assign already_in_cart = true -%}{%- endif -%}
+          {%- endfor -%}
+          {%- unless already_in_cart -%}
+            <div class="cart-upsell">
+              <div class="cart-upsell__media">
+                {%- if upsell.featured_media -%}
+                  <img src="{{ upsell.featured_media | image_url: width: 120 }}" width="60" height="60" loading="lazy" alt="{{ upsell.featured_media.alt | default: upsell.title | escape }}">
+                {%- else -%}
+                  {% render 'ph-image', label: upsell.title, ratio: '1x1' %}
+                {%- endif -%}
+              </div>
+              <div class="cart-upsell__body">
+                <p class="cart-upsell__kicker">{{ section.settings.upsell_heading }}</p>
+                <p class="cart-upsell__title">{{ upsell.title }}</p>
+                <p class="cart-upsell__price">{{ upsell.price | money }}</p>
+              </div>
+              <product-form>
+                <form action="{{ routes.cart_add_url }}" method="post">
+                  <input type="hidden" name="id" value="{{ upsell.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="btn btn--secondary" style="padding: 0.5rem 1rem; min-height: 40px; font-size: 0.95rem;">
+                    <span data-atc-text>Add</span>
+                  </button>
+                </form>
+              </product-form>
+            </div>
+          {%- endunless -%}
+        {%- endif -%}
+
+        {%- comment -%}
+          BUNDLER APP INTEGRATION BLOCK — cart page. Bundler's cart widget
+          renders inside #bundler-cart-page-widget. Configure in the app.
+        {%- endcomment -%}
+        {%- if section.settings.show_bundler_block -%}
+          <div class="bundler-block" style="margin-top: var(--space-4);">
+            <div id="bundler-cart-page-widget" class="bundler-target"></div>
+            {%- if settings.show_bundle_note and settings.bundle_note != blank -%}
+              <p class="bundler-block__note">
+                {% render 'icon', name: 'plus', size: 16 %}
+                {{ settings.bundle_note }}
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- assign has_subscription = false -%}
+        {%- for item in cart.items -%}
+          {%- if item.selling_plan_allocation -%}{%- assign has_subscription = true -%}{%- endif -%}
+        {%- endfor -%}
+        {%- unless has_subscription -%}
+          {%- if section.settings.subscription_nudge != blank -%}
+            <p class="cart-note-sub" style="margin-top: var(--space-4);">
+              {% render 'icon', name: 'refresh', size: 14 %}
+              {{ section.settings.subscription_nudge }}
+            </p>
+          {%- endif -%}
+        {%- endunless -%}
+      </div>
+
+      <aside class="cart-summary" aria-label="Order summary">
+        {%- if has_subscription -%}
+          <p class="cart-note-sub">{% render 'icon', name: 'refresh', size: 14 %} {{ 'cart.subscription_note' | t }}</p>
+        {%- endif -%}
+        <div class="cart-subtotal">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <p class="small muted" style="margin-bottom: var(--space-4);">{{ 'cart.taxes_and_shipping' | t }}</p>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="btn btn--primary btn--full btn--large">{{ 'cart.checkout' | t }}</button>
+        </form>
+        {%- if additional_checkout_buttons and section.settings.show_express -%}
+          <div class="additional-checkout-buttons" aria-label="Express checkout">
+            {{ content_for_additional_checkout_buttons }}
+          </div>
+        {%- endif -%}
+        <p class="small" style="margin-top: var(--space-4); display: flex; gap: var(--space-2); align-items: flex-start;">
+          {% render 'icon', name: 'shield', size: 18 %}
+          <span><strong>{{ settings.guarantee_heading }}.</strong> {{ settings.guarantee_text }}</span>
+        </p>
+      </aside>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Cart page",
+  "settings": [
+    {
+      "type": "product",
+      "id": "upsell_product",
+      "label": "Upsell product",
+      "info": "Shown when it's not already in the cart — recommend the 2L Refill or the next size up."
+    },
+    { "type": "text", "id": "upsell_heading", "label": "Upsell heading", "default": "Don't run out mid-job" },
+    { "type": "checkbox", "id": "show_bundler_block", "label": "Show Bundler app block", "default": true },
+    {
+      "type": "text",
+      "id": "subscription_nudge",
+      "label": "Subscription nudge",
+      "default": "Switch your refill to Subscribe & Save on the product page and save on every delivery."
+    },
+    { "type": "checkbox", "id": "show_express", "label": "Show express checkout buttons", "default": true },
+    { "type": "url", "id": "empty_cart_link", "label": "Empty cart button link" }
+  ]
+}
+{% endschema %}

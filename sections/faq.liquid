@@ -1,0 +1,142 @@
+{%- comment -%}
+  FAQ accordion. Optional schema.org FAQPage JSON-LD (enable on the FAQ
+  page only, so structured data isn't duplicated across the site).
+  Group headings via the "group" block type.
+{%- endcomment -%}
+<section class="section{% if section.settings.soft_background %} section--soft{% endif %}">
+  <div class="container container--narrow">
+    <div class="section-head{% if section.settings.centre_heading %} section-head--center{% endif %}">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="lede">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="faq-list">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'group' -%}
+            <h3 class="faq-group-title" {{ block.shopify_attributes }}>{{ block.settings.heading }}</h3>
+          {%- when 'question' -%}
+            <details class="faq-item" {{ block.shopify_attributes }}>
+              <summary>
+                {{ block.settings.question }}
+                {% render 'icon', name: 'chevron', size: 20 %}
+              </summary>
+              <div class="faq-item__answer">{{ block.settings.answer }}</div>
+            </details>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+      <p class="text-center" style="margin-top: var(--space-6);">
+        <a href="{{ section.settings.cta_link }}" class="btn btn--secondary">{{ section.settings.cta_label }}</a>
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- if section.settings.enable_schema -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- assign first_question = true -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'question' -%}
+          {%- unless first_question -%},{%- endunless -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | strip_html | json }}
+            }
+          }
+          {%- assign first_question = false -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Fair questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Things people ask us" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "checkbox", "id": "centre_heading", "label": "Centre heading", "default": true },
+    {
+      "type": "checkbox",
+      "id": "enable_schema",
+      "label": "Output schema.org FAQ markup",
+      "info": "Enable on the FAQ page only, to avoid duplicate structured data.",
+      "default": false
+    },
+    { "type": "checkbox", "id": "soft_background", "label": "Soft background", "default": false },
+    { "type": "text", "id": "cta_label", "label": "Button label" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Group heading",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Using it" }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Do I really not have to rinse?" },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Really. Soak the surface, put the hose away, get on with your weekend. Rain and UV do the follow-up over the coming weeks.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Do I really not have to rinse?",
+            "answer": "<p>Really. Soak the surface, put the hose away, get on with your weekend. Rain and UV do the follow-up over the coming weeks.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Surface grime starts lifting within days. Moss, mould and lichen brown off and weather away over 2–8 weeks depending on how thick it is and what the weather's doing. It's the opposite of instant — that's why it lasts.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe around plants, kids and pets?",
+            "answer": "<p>Yes — no acid, no bleach, no chlorine fumes. Used as directed it won't nuke the garden below the fence. Keep everyone off surfaces until they're dry, same as you would with anything.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What surfaces can I use it on?",
+            "answer": "<p>Painted weatherboard, brick, plaster, concrete paths and driveways, fences, decks, roofs, cobbles, glasshouse roofs — basically anything outside that's gone green, black or generally feral.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
