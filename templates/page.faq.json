@@ -3,7 +3,12 @@
     "main": {
       "type": "faq",
       "blocks": {
-        "g-using": { "type": "group", "settings": { "heading": "Using it" } },
+        "g-using": {
+          "type": "group",
+          "settings": {
+            "heading": "Using it"
+          }
+        },
         "q-1": {
           "type": "question",
           "settings": {
@@ -39,7 +44,12 @@
             "answer": "<p>Mould, algae, lichen and moss on outdoor hard surfaces — roofs, concrete, decks, fences, paths, driveways and brickwork.</p>"
           }
         },
-        "g-safety": { "type": "group", "settings": { "heading": "Safety" } },
+        "g-safety": {
+          "type": "group",
+          "settings": {
+            "heading": "Safety"
+          }
+        },
         "q-6": {
           "type": "question",
           "settings": {
@@ -61,7 +71,12 @@
             "answer": "<p>Test an inconspicuous area first, and take extra care on dark aluminium and joinery. Keep it out of ponds, streams and waterways, and store it locked up away from kids.</p>"
           }
         },
-        "g-coverage": { "type": "group", "settings": { "heading": "Coverage & sizes" } },
+        "g-coverage": {
+          "type": "group",
+          "settings": {
+            "heading": "Coverage & sizes"
+          }
+        },
         "q-9": {
           "type": "question",
           "settings": {
@@ -76,7 +91,12 @@
             "answer": "<p>Fence, deck or path: the 2L Hose-End Sprayer. Topping up through the year: the 2L Refill on Subscribe &amp; Save. Whole house: the 5L Concentrate. Lifestyle block or serious DIY: the 20L Concentrate. Per-litre pricing gets better as you go up.</p>"
           }
         },
-        "g-subs": { "type": "group", "settings": { "heading": "Subscriptions & delivery" } },
+        "g-subs": {
+          "type": "group",
+          "settings": {
+            "heading": "Subscriptions & delivery"
+          }
+        },
         "q-11": {
           "type": "question",
           "settings": {
@@ -91,7 +111,12 @@
             "answer": "<p>2–4 working days NZ-wide, free on orders over $79. Rural addresses can add a day or two — the moss will still be there when it arrives, unfortunately.</p>"
           }
         },
-        "g-vs": { "type": "group", "settings": { "heading": "vs other products" } },
+        "g-vs": {
+          "type": "group",
+          "settings": {
+            "heading": "vs other products"
+          }
+        },
         "q-13": {
           "type": "question",
           "settings": {
@@ -115,11 +140,26 @@
         }
       },
       "block_order": [
-        "g-using", "q-1", "q-2", "q-3", "q-4", "q-5",
-        "g-safety", "q-6", "q-7", "q-8",
-        "g-coverage", "q-9", "q-10",
-        "g-subs", "q-11", "q-12",
-        "g-vs", "q-13", "q-14", "q-15"
+        "g-using",
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5",
+        "g-safety",
+        "q-6",
+        "q-7",
+        "q-8",
+        "g-coverage",
+        "q-9",
+        "q-10",
+        "g-subs",
+        "q-11",
+        "q-12",
+        "g-vs",
+        "q-13",
+        "q-14",
+        "q-15"
       ],
       "settings": {
         "kicker": "Everything we get asked",
@@ -133,8 +173,13 @@
     },
     "cta": {
       "type": "cta-banner",
-      "settings": {}
+      "settings": {
+        "cta_link": "/collections/shop-soak-n-go"
+      }
     }
   },
-  "order": ["main", "cta"]
+  "order": [
+    "main",
+    "cta"
+  ]
 }

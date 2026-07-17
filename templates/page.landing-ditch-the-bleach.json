@@ -4,19 +4,45 @@
     "hero": {
       "type": "landing-hero",
       "blocks": {
-        "point-1": { "type": "point", "settings": { "text": "No bleach smell hanging over the whole street" } },
-        "point-2": { "type": "point", "settings": { "text": "Nothing to rinse off afterwards — the weather finishes the job" } },
-        "point-3": { "type": "point", "settings": { "text": "No corroded fittings, no bleached patches on the paint" } },
-        "point-4": { "type": "point", "settings": { "text": "A result that keeps improving for weeks — and lasts" } }
+        "point-1": {
+          "type": "point",
+          "settings": {
+            "text": "No bleach smell hanging over the whole street"
+          }
+        },
+        "point-2": {
+          "type": "point",
+          "settings": {
+            "text": "Nothing to rinse off afterwards — the weather finishes the job"
+          }
+        },
+        "point-3": {
+          "type": "point",
+          "settings": {
+            "text": "No corroded fittings, no bleached patches on the paint"
+          }
+        },
+        "point-4": {
+          "type": "point",
+          "settings": {
+            "text": "A result that keeps improving for weeks — and lasts"
+          }
+        }
       },
-      "block_order": ["point-1", "point-2", "point-3", "point-4"],
+      "block_order": [
+        "point-1",
+        "point-2",
+        "point-3",
+        "point-4"
+      ],
       "settings": {
         "kicker": "For recovering bleach users",
         "heading": "Ditch the bleach.",
         "subheading": "Fast-acting bleach cleaners give you fast results — that you rinse straight down the garden, along with the bleach. There's a better way to deal with moss and mould.",
         "cta_label": "Shop the hose-end sprayer",
         "under_cta": "Free NZ shipping over $79 · If it doesn't work, we'll make it right",
-        "placeholder_label": "HERO — sprayer on hose, healthy garden"
+        "placeholder_label": "HERO — sprayer on hose, healthy garden",
+        "cta_link": "/products/soak-n-go-2l-hose-end-sprayer"
       }
     },
     "problem": {
@@ -33,14 +59,69 @@
     "comparison": {
       "type": "comparison-table",
       "blocks": {
-        "row-1": { "type": "row", "settings": { "label": "No bleach", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-2": { "type": "row", "settings": { "label": "No acid", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-3": { "type": "row", "settings": { "label": "No rinsing", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-4": { "type": "row", "settings": { "label": "Keeps working for weeks after application", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-5": { "type": "row", "settings": { "label": "No mixing — clicks onto the hose", "us": "tick", "a": "cross", "b": "cross" } },
-        "row-6": { "type": "row", "settings": { "label": "Result keeps working for weeks", "us": "tick", "a": "cross", "b": "tick" } }
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "label": "No bleach",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "label": "No acid",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "label": "No rinsing",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "label": "Keeps working for weeks after application",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "label": "No mixing — clicks onto the hose",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        },
+        "row-6": {
+          "type": "row",
+          "settings": {
+            "label": "Result keeps working for weeks",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        }
       },
-      "block_order": ["row-1", "row-2", "row-3", "row-4", "row-5", "row-6"],
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5",
+        "row-6"
+      ],
       "settings": {
         "kicker": "Side by side",
         "heading": "Bleach vs the walk-away method",
@@ -49,7 +130,8 @@
         "col_b": "Spray-on concentrates",
         "soft_background": false,
         "cta_label": "Make the switch",
-        "cta_primary": true
+        "cta_primary": true,
+        "cta_link": "/products/soak-n-go-2l-hose-end-sprayer"
       }
     },
     "before-after": {
@@ -64,7 +146,9 @@
           }
         }
       },
-      "block_order": ["pair-1"],
+      "block_order": [
+        "pair-1"
+      ],
       "settings": {
         "kicker": "The receipts",
         "heading": "No bleach. Same clean.",
@@ -78,9 +162,16 @@
         "heading": "Put the bleach down",
         "text": "One 2L hose-end bottle does a fence, deck and path. Click it on, soak, and let the weather earn its keep.",
         "cta_label": "Shop the hose-end sprayer",
-        "navy_style": true
+        "navy_style": true,
+        "cta_link": "/products/soak-n-go-2l-hose-end-sprayer"
       }
     }
   },
-  "order": ["hero", "problem", "comparison", "before-after", "cta"]
+  "order": [
+    "hero",
+    "problem",
+    "comparison",
+    "before-after",
+    "cta"
+  ]
 }

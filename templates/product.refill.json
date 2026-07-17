@@ -5,11 +5,22 @@
       "blocks": {
         "kicker": {
           "type": "kicker",
-          "settings": { "text": "The never-run-out bottle" }
+          "settings": {
+            "text": "The never-run-out bottle"
+          }
         },
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "coverage": { "type": "coverage", "settings": {} },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "coverage": {
+          "type": "coverage",
+          "settings": {}
+        },
         "intro": {
           "type": "text",
           "settings": {
@@ -18,20 +29,44 @@
         },
         "selling-plan": {
           "type": "selling_plan",
-          "settings": { "subscribe_default": true }
+          "settings": {
+            "subscribe_default": true
+          }
         },
-        "bundler": { "type": "bundler", "settings": {} },
-        "quantity": { "type": "quantity", "settings": {} },
+        "bundler": {
+          "type": "bundler",
+          "settings": {}
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
         "buy-buttons": {
           "type": "buy_buttons",
-          "settings": { "show_express": true }
+          "settings": {
+            "show_express": true
+          }
         },
         "ladder": {
           "type": "ladder",
-          "settings": { "heading": "Need more grunt?" }
+          "settings": {
+            "heading": "Need more grunt?",
+            "products": [
+              "soak-n-go-2l-hose-end-sprayer",
+              "soak-n-go-2l-refill",
+              "soak-n-go-5l-concentrate",
+              "soak-n-go-20l-concentrate"
+            ]
+          }
         },
-        "trust-row": { "type": "trust_row", "settings": {} },
-        "description": { "type": "description", "settings": {} },
+        "trust-row": {
+          "type": "trust_row",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
         "subscription-details": {
           "type": "accordion",
           "settings": {
@@ -74,7 +109,9 @@
     },
     "subscribe-banner": {
       "type": "subscribe-banner",
-      "settings": {}
+      "settings": {
+        "cta_link": "/products/soak-n-go-2l-refill"
+      }
     },
     "cross-sell": {
       "type": "product-range",
@@ -84,9 +121,18 @@
         "subheading": "Free NZ shipping kicks in over $79 — a second refill usually gets you there.",
         "columns": "3",
         "show_bundle_nudge": true,
-        "soft_background": true
+        "soft_background": true,
+        "products": [
+          "soak-n-go-2l-hose-end-sprayer",
+          "soak-n-go-5l-concentrate",
+          "soak-n-go-20l-concentrate"
+        ]
       }
     }
   },
-  "order": ["main", "subscribe-banner", "cross-sell"]
+  "order": [
+    "main",
+    "subscribe-banner",
+    "cross-sell"
+  ]
 }

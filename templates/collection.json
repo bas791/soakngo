@@ -8,7 +8,8 @@
           "settings": {
             "job": "Fence, deck, path or patio",
             "pick": "2L Hose-End Sprayer",
-            "why": "Clicks onto the hose, no mixing. The starting point."
+            "why": "Clicks onto the hose, no mixing. The starting point.",
+            "product": "soak-n-go-2l-hose-end-sprayer"
           }
         },
         "helper-2": {
@@ -16,7 +17,8 @@
           "settings": {
             "job": "Topping up through the year",
             "pick": "2L Refill",
-            "why": "Cheapest on Subscribe & Save — never run out."
+            "why": "Cheapest on Subscribe & Save — never run out.",
+            "product": "soak-n-go-2l-refill"
           }
         },
         "helper-3": {
@@ -24,7 +26,8 @@
           "settings": {
             "job": "The whole house",
             "pick": "5L Concentrate",
-            "why": "Value tier for bigger properties."
+            "why": "Value tier for bigger properties.",
+            "product": "soak-n-go-5l-concentrate"
           }
         },
         "helper-4": {
@@ -32,25 +35,66 @@
           "settings": {
             "job": "Lifestyle block or serious DIY",
             "pick": "20L Concentrate",
-            "why": "Trade tier. Bring a mate."
+            "why": "Trade tier. Bring a mate.",
+            "product": "soak-n-go-20l-concentrate"
           }
         }
       },
-      "block_order": ["helper-1", "helper-2", "helper-3", "helper-4"],
+      "block_order": [
+        "helper-1",
+        "helper-2",
+        "helper-3",
+        "helper-4"
+      ],
       "settings": {}
     },
     "calculator": {
       "type": "coverage-calculator",
-      "settings": {}
+      "settings": {
+        "products": [
+          "soak-n-go-2l-hose-end-sprayer",
+          "soak-n-go-2l-refill",
+          "soak-n-go-5l-concentrate",
+          "soak-n-go-20l-concentrate"
+        ]
+      }
     },
     "comparison-teaser": {
       "type": "comparison-table",
       "blocks": {
-        "row-1": { "type": "row", "settings": { "label": "No bleach", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-2": { "type": "row", "settings": { "label": "No mixing — clicks onto the hose", "us": "tick", "a": "cross", "b": "cross" } },
-        "row-3": { "type": "row", "settings": { "label": "Made by professional exterior cleaners", "us": "tick", "a": "cross", "b": "cross" } }
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "label": "No bleach",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "label": "No mixing — clicks onto the hose",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "label": "Made by professional exterior cleaners",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        }
       },
-      "block_order": ["row-1", "row-2", "row-3"],
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3"
+      ],
       "settings": {
         "kicker": "Still comparing?",
         "heading": "The short version",
@@ -62,5 +106,9 @@
       }
     }
   },
-  "order": ["main", "calculator", "comparison-teaser"]
+  "order": [
+    "main",
+    "calculator",
+    "comparison-teaser"
+  ]
 }

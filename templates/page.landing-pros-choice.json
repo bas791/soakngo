@@ -4,18 +4,38 @@
     "hero": {
       "type": "landing-hero",
       "blocks": {
-        "point-1": { "type": "point", "settings": { "text": "Made by Maximum Wash — around 20 pros washing buildings across Auckland, Tauranga and Christchurch" } },
-        "point-2": { "type": "point", "settings": { "text": "The same approach we use on commercial exteriors, sized for your place" } },
-        "point-3": { "type": "point", "settings": { "text": "No acid, no bleach, no scrub, no rinse" } }
+        "point-1": {
+          "type": "point",
+          "settings": {
+            "text": "Made by Maximum Wash — around 20 pros washing buildings across Auckland, Tauranga and Christchurch"
+          }
+        },
+        "point-2": {
+          "type": "point",
+          "settings": {
+            "text": "The same approach we use on commercial exteriors, sized for your place"
+          }
+        },
+        "point-3": {
+          "type": "point",
+          "settings": {
+            "text": "No acid, no bleach, no scrub, no rinse"
+          }
+        }
       },
-      "block_order": ["point-1", "point-2", "point-3"],
+      "block_order": [
+        "point-1",
+        "point-2",
+        "point-3"
+      ],
       "settings": {
         "kicker": "Best house wash, according to people who wash houses",
         "heading": "The pro's choice.",
         "subheading": "We wash buildings for a living. Soak n Go is the product we'd use at home — and now you can too.",
         "cta_label": "Shop Soak n Go",
         "under_cta": "If it doesn't work, we'll make it right — we know what clean looks like",
-        "placeholder_label": "HERO — Maximum Wash crew on site"
+        "placeholder_label": "HERO — Maximum Wash crew on site",
+        "cta_link": "/collections/shop-soak-n-go"
       }
     },
     "story": {
@@ -57,7 +77,11 @@
           }
         }
       },
-      "block_order": ["col-1", "col-2", "col-3"],
+      "block_order": [
+        "col-1",
+        "col-2",
+        "col-3"
+      ],
       "settings": {
         "kicker": "Why trust us",
         "heading": "What the pros optimise for",
@@ -68,20 +92,69 @@
     "comparison": {
       "type": "comparison-table",
       "blocks": {
-        "row-1": { "type": "row", "settings": { "label": "Made by professional exterior cleaners", "us": "tick", "a": "cross", "b": "cross" } },
-        "row-2": { "type": "row", "settings": { "label": "No mixing — clicks onto the hose", "us": "tick", "a": "cross", "b": "cross" } },
-        "row-3": { "type": "row", "settings": { "label": "No bleach, no acid", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-4": { "type": "row", "settings": { "label": "NZ made & owned", "us": "tick", "a": "text", "a_text": "Varies", "b": "text", "b_text": "Varies" } },
-        "row-5": { "type": "row", "settings": { "label": "Subscribe & Save so you never run out", "us": "tick", "a": "cross", "b": "cross" } }
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "label": "Made by professional exterior cleaners",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "label": "No mixing — clicks onto the hose",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "label": "No bleach, no acid",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "label": "NZ made & owned",
+            "us": "tick",
+            "a": "text",
+            "a_text": "Varies",
+            "b": "text",
+            "b_text": "Varies"
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "label": "Subscribe & Save so you never run out",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        }
       },
-      "block_order": ["row-1", "row-2", "row-3", "row-4", "row-5"],
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5"
+      ],
       "settings": {
         "kicker": "Side by side",
         "heading": "Soak n Go vs the others",
         "subheading": "",
         "soft_background": false,
         "cta_label": "Shop the range",
-        "cta_primary": true
+        "cta_primary": true,
+        "cta_link": "/collections/shop-soak-n-go"
       }
     },
     "guarantee": {
@@ -101,9 +174,17 @@
         "kicker": "Ready when you are",
         "heading": "Wash it like a pro. Without doing any washing.",
         "cta_label": "Shop Soak n Go",
-        "navy_style": true
+        "navy_style": true,
+        "cta_link": "/collections/shop-soak-n-go"
       }
     }
   },
-  "order": ["hero", "story", "values", "comparison", "guarantee", "cta"]
+  "order": [
+    "hero",
+    "story",
+    "values",
+    "comparison",
+    "guarantee",
+    "cta"
+  ]
 }

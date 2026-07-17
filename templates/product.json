@@ -3,10 +3,22 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "kicker": { "type": "kicker", "settings": {} },
-        "title": { "type": "title", "settings": {} },
-        "price": { "type": "price", "settings": {} },
-        "coverage": { "type": "coverage", "settings": {} },
+        "kicker": {
+          "type": "kicker",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "coverage": {
+          "type": "coverage",
+          "settings": {}
+        },
         "intro": {
           "type": "text",
           "settings": {
@@ -15,24 +27,55 @@
         },
         "ladder": {
           "type": "ladder",
-          "settings": { "heading": "Pick your size" }
+          "settings": {
+            "heading": "Pick your size",
+            "products": [
+              "soak-n-go-2l-hose-end-sprayer",
+              "soak-n-go-2l-refill",
+              "soak-n-go-5l-concentrate",
+              "soak-n-go-20l-concentrate"
+            ]
+          }
         },
         "selling-plan": {
           "type": "selling_plan",
-          "settings": { "subscribe_default": false }
+          "settings": {
+            "subscribe_default": false
+          }
         },
-        "bundler": { "type": "bundler", "settings": {} },
-        "quantity": { "type": "quantity", "settings": {} },
+        "bundler": {
+          "type": "bundler",
+          "settings": {}
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
         "buy-buttons": {
           "type": "buy_buttons",
-          "settings": { "show_express": true }
+          "settings": {
+            "show_express": true
+          }
         },
         "coverage-calc": {
           "type": "coverage_calc",
+          "settings": {
+            "products": [
+              "soak-n-go-2l-hose-end-sprayer",
+              "soak-n-go-2l-refill",
+              "soak-n-go-5l-concentrate",
+              "soak-n-go-20l-concentrate"
+            ]
+          }
+        },
+        "trust-row": {
+          "type": "trust_row",
           "settings": {}
         },
-        "trust-row": { "type": "trust_row", "settings": {} },
-        "description": { "type": "description", "settings": {} },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
         "comparison": {
           "type": "accordion",
           "settings": {
@@ -109,7 +152,11 @@
           }
         }
       },
-      "block_order": ["q-1", "q-2", "q-3"],
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3"
+      ],
       "settings": {
         "kicker": "Good questions",
         "heading": "Before you ask",
@@ -127,9 +174,18 @@
         "columns": "3",
         "show_bundle_nudge": true,
         "cta_label": "",
-        "soft_background": true
+        "soft_background": true,
+        "products": [
+          "soak-n-go-2l-refill",
+          "soak-n-go-5l-concentrate",
+          "soak-n-go-20l-concentrate"
+        ]
       }
     }
   },
-  "order": ["main", "product-faq", "cross-sell"]
+  "order": [
+    "main",
+    "product-faq",
+    "cross-sell"
+  ]
 }

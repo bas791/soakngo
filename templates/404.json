@@ -12,9 +12,18 @@
         "subheading": "",
         "columns": "4",
         "show_bundle_nudge": false,
-        "soft_background": true
+        "soft_background": true,
+        "products": [
+          "soak-n-go-2l-hose-end-sprayer",
+          "soak-n-go-2l-refill",
+          "soak-n-go-5l-concentrate",
+          "soak-n-go-20l-concentrate"
+        ]
       }
     }
   },
-  "order": ["main", "range"]
+  "order": [
+    "main",
+    "range"
+  ]
 }

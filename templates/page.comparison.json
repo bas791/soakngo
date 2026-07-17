@@ -13,24 +13,110 @@
     "comparison": {
       "type": "comparison-table",
       "blocks": {
-        "row-1": { "type": "row", "settings": { "label": "No bleach", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-2": { "type": "row", "settings": { "label": "No acid", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-3": { "type": "row", "settings": { "label": "No scrubbing", "us": "tick", "a": "text", "a_text": "Sometimes", "b": "tick" } },
-        "row-4": { "type": "row", "settings": { "label": "No rinsing", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-5": { "type": "row", "settings": { "label": "No mixing — clicks onto the hose", "us": "tick", "a": "cross", "b": "cross" } },
-        "row-6": { "type": "row", "settings": { "label": "Keeps working for weeks after application", "us": "tick", "a": "cross", "b": "tick" } },
-        "row-7": { "type": "row", "settings": { "label": "NZ made & owned", "us": "tick", "a": "text", "a_text": "Varies", "b": "text", "b_text": "Varies" } },
-        "row-8": { "type": "row", "settings": { "label": "Made by professional exterior cleaners", "us": "tick", "a": "cross", "b": "cross" } },
-        "row-9": { "type": "row", "settings": { "label": "Subscribe & Save so you never run out", "us": "tick", "a": "cross", "b": "cross" } }
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "label": "No bleach",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "label": "No acid",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "label": "No scrubbing",
+            "us": "tick",
+            "a": "text",
+            "a_text": "Sometimes",
+            "b": "tick"
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "label": "No rinsing",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "label": "No mixing — clicks onto the hose",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        },
+        "row-6": {
+          "type": "row",
+          "settings": {
+            "label": "Keeps working for weeks after application",
+            "us": "tick",
+            "a": "cross",
+            "b": "tick"
+          }
+        },
+        "row-7": {
+          "type": "row",
+          "settings": {
+            "label": "NZ made & owned",
+            "us": "tick",
+            "a": "text",
+            "a_text": "Varies",
+            "b": "text",
+            "b_text": "Varies"
+          }
+        },
+        "row-8": {
+          "type": "row",
+          "settings": {
+            "label": "Made by professional exterior cleaners",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        },
+        "row-9": {
+          "type": "row",
+          "settings": {
+            "label": "Subscribe & Save so you never run out",
+            "us": "tick",
+            "a": "cross",
+            "b": "cross"
+          }
+        }
       },
-      "block_order": ["row-1", "row-2", "row-3", "row-4", "row-5", "row-6", "row-7", "row-8", "row-9"],
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5",
+        "row-6",
+        "row-7",
+        "row-8",
+        "row-9"
+      ],
       "settings": {
         "kicker": "",
         "heading": "Feature by feature",
         "subheading": "",
         "soft_background": true,
         "cta_label": "Shop Soak n Go",
-        "cta_primary": true
+        "cta_primary": true,
+        "cta_link": "/collections/shop-soak-n-go"
       }
     },
     "vs-bleach": {
@@ -72,7 +158,10 @@
           }
         }
       },
-      "block_order": ["q-1", "q-2"],
+      "block_order": [
+        "q-1",
+        "q-2"
+      ],
       "settings": {
         "kicker": "Fair questions",
         "heading": "About this comparison",
@@ -86,9 +175,17 @@
         "heading": "Try the walk-away method",
         "text": "One 2L hose-end bottle covers up to 250 m². If it doesn't work, we'll make it right.",
         "cta_label": "Shop Soak n Go",
-        "navy_style": true
+        "navy_style": true,
+        "cta_link": "/collections/shop-soak-n-go"
       }
     }
   },
-  "order": ["intro", "comparison", "vs-bleach", "vs-concentrates", "faq", "cta"]
+  "order": [
+    "intro",
+    "comparison",
+    "vs-bleach",
+    "vs-concentrates",
+    "faq",
+    "cta"
+  ]
 }

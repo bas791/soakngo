@@ -4,18 +4,38 @@
     "hero": {
       "type": "landing-hero",
       "blocks": {
-        "point-1": { "type": "point", "settings": { "text": "Save on every single delivery — in dollars, not fine print" } },
-        "point-2": { "type": "point", "settings": { "text": "Turns up before the green stuff does" } },
-        "point-3": { "type": "point", "settings": { "text": "Pause, skip or cancel anytime from your email" } }
+        "point-1": {
+          "type": "point",
+          "settings": {
+            "text": "Save on every single delivery — in dollars, not fine print"
+          }
+        },
+        "point-2": {
+          "type": "point",
+          "settings": {
+            "text": "Turns up before the green stuff does"
+          }
+        },
+        "point-3": {
+          "type": "point",
+          "settings": {
+            "text": "Pause, skip or cancel anytime from your email"
+          }
+        }
       },
-      "block_order": ["point-1", "point-2", "point-3"],
+      "block_order": [
+        "point-1",
+        "point-2",
+        "point-3"
+      ],
       "settings": {
         "kicker": "Subscribe & Save on the 2L Refill",
         "heading": "Never run out.",
         "subheading": "The houses that always look freshly washed aren't washed more often — they're soaked on a rhythm. Put your refills on autopilot and the place never gets a chance to go green.",
         "cta_label": "Start Subscribe & Save",
         "under_cta": "No lock-in, no phone calls, no \"retention specialists\"",
-        "placeholder_label": "HERO — 2L refill bottle at the front door"
+        "placeholder_label": "HERO — 2L refill bottle at the front door",
+        "cta_link": "/products/soak-n-go-2l-refill"
       }
     },
     "trust": {
@@ -24,7 +44,9 @@
     },
     "savings": {
       "type": "savings-calculator",
-      "settings": {}
+      "settings": {
+        "product": "soak-n-go-2l-refill"
+      }
     },
     "cadence": {
       "type": "multicolumn",
@@ -54,7 +76,11 @@
           }
         }
       },
-      "block_order": ["col-1", "col-2", "col-3"],
+      "block_order": [
+        "col-1",
+        "col-2",
+        "col-3"
+      ],
       "settings": {
         "kicker": "How it works",
         "heading": "Set it, forget it, stay immaculate",
@@ -69,9 +95,16 @@
         "heading": "Your house, permanently sorted",
         "text": "Start with the refill on Subscribe & Save. Cheaper every time, and it never lets you run out mid-spring.",
         "cta_label": "Start Subscribe & Save",
-        "navy_style": true
+        "navy_style": true,
+        "cta_link": "/products/soak-n-go-2l-refill"
       }
     }
   },
-  "order": ["hero", "trust", "savings", "cadence", "cta"]
+  "order": [
+    "hero",
+    "trust",
+    "savings",
+    "cadence",
+    "cta"
+  ]
 }
