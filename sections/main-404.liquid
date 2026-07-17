@@ -1,0 +1,28 @@
+<section class="container error-page">
+  <p class="kicker">404</p>
+  <h1 class="display">{{ section.settings.heading }}</h1>
+  <p class="lede" style="margin: var(--space-4) auto var(--space-6);">{{ section.settings.text }}</p>
+  <p>
+    <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--large">{{ section.settings.cta_label }}</a>
+  </p>
+  <p style="margin-top: var(--space-4);">
+    <a href="{{ routes.root_url }}" class="link-arrow">Or head back to the homepage {% render 'icon', name: 'arrow', size: 16 %}</a>
+  </p>
+</section>
+
+{% schema %}
+{
+  "name": "404 page",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Soaked clean off the internet." },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "This page got the full treatment: no acid, no bleach, no scrub, no rinse — and now, no page. The products, however, are exactly where they should be."
+    },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Shop Soak n Go" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ]
+}
+{% endschema %}

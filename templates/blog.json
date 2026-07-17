@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {}
+    },
+    "email": {
+      "type": "email-capture",
+      "settings": {}
+    }
+  },
+  "order": ["main", "email"]
+}

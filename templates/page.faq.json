@@ -1,0 +1,140 @@
+{
+  "sections": {
+    "main": {
+      "type": "faq",
+      "blocks": {
+        "g-using": { "type": "group", "settings": { "heading": "Using it" } },
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "How do I apply Soak n Go?",
+            "answer": "<p>Shake the bottle, click it onto any garden hose, check your tap pressure on the RINSE setting, then turn the nozzle to CLEAN and soak the surface. Working on a house? Go from the ground up. Then turn it OFF, put it away, and you're done — no rinsing.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "When's the best time to apply it?",
+            "answer": "<p>A dry, overcast, still day with no rain expected for 12 hours. Apply to a dry surface. Spring is the classic time, but any decent weather window works.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "Do I really not have to rinse or scrub?",
+            "answer": "<p>Really. In fact the label says DO NOT rinse off — the product needs to stay put so the weather can work on it. Soak, walk away, get on with your weekend.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>It works over time with weather action. Growth browns off and washes away over the following weeks — black mould can even turn orange first, then disappear after a few rainfalls. Stubborn stains in sheltered spots can take up to 5–6 months, and vertical or covered areas that don't get rain may need a retreat or a light assist.</p>"
+          }
+        },
+        "q-5": {
+          "type": "question",
+          "settings": {
+            "question": "What does it actually treat?",
+            "answer": "<p>Mould, algae, lichen and moss on outdoor hard surfaces — roofs, concrete, decks, fences, paths, driveways and brickwork.</p>"
+          }
+        },
+        "g-safety": { "type": "group", "settings": { "heading": "Safety" } },
+        "q-6": {
+          "type": "question",
+          "settings": {
+            "question": "What about my garden, kids and pets?",
+            "answer": "<p>No acid, no bleach — but it's still a serious outdoor cleaner, so treat it with respect. Water surrounding plants and grass before and after applying, keep the spray off plants and animals, and keep everyone off treated surfaces until dry. If pets contact the wet surface, rinse paws and mouth and see a vet. Full safety directions and the SDS are on the label and website.</p>"
+          }
+        },
+        "q-7": {
+          "type": "question",
+          "settings": {
+            "question": "Can I use it on my roof if I collect rainwater?",
+            "answer": "<p>Yes — but disconnect the water supply to your tank first, and leave it disconnected for 3–4 heavy rainfalls before reconnecting.</p>"
+          }
+        },
+        "q-8": {
+          "type": "question",
+          "settings": {
+            "question": "Anything it doesn't play nicely with?",
+            "answer": "<p>Test an inconspicuous area first, and take extra care on dark aluminium and joinery. Keep it out of ponds, streams and waterways, and store it locked up away from kids.</p>"
+          }
+        },
+        "g-coverage": { "type": "group", "settings": { "heading": "Coverage & sizes" } },
+        "q-9": {
+          "type": "question",
+          "settings": {
+            "question": "How much do I need?",
+            "answer": "<p>The 2L hose-end bottle covers up to 250 m² — enough for an average single-storey house exterior, or a fence plus paths with some left over. Coverage depends on the surface, water pressure and how you apply it. Use the coverage calculator on any product page if you'd rather not do maths on a Saturday.</p>"
+          }
+        },
+        "q-10": {
+          "type": "question",
+          "settings": {
+            "question": "Which size should I buy?",
+            "answer": "<p>Fence, deck or path: the 2L Hose-End Sprayer. Topping up through the year: the 2L Refill on Subscribe &amp; Save. Whole house: the 5L Concentrate. Lifestyle block or serious DIY: the 20L Concentrate. Per-litre pricing gets better as you go up.</p>"
+          }
+        },
+        "g-subs": { "type": "group", "settings": { "heading": "Subscriptions & delivery" } },
+        "q-11": {
+          "type": "question",
+          "settings": {
+            "question": "How does Subscribe & Save work?",
+            "answer": "<p>Pick a delivery rhythm — most homes suit a refill every 3 months — and every delivery is discounted. You get an email before each charge, and you can pause, skip or cancel anytime from a link in that email. No lock-in, no phone calls.</p>"
+          }
+        },
+        "q-12": {
+          "type": "question",
+          "settings": {
+            "question": "How fast is delivery?",
+            "answer": "<p>2–4 working days NZ-wide, free on orders over $79. Rural addresses can add a day or two — the moss will still be there when it arrives, unfortunately.</p>"
+          }
+        },
+        "g-vs": { "type": "group", "settings": { "heading": "vs other products" } },
+        "q-13": {
+          "type": "question",
+          "settings": {
+            "question": "How is this different from fast-acting bleach cleaners?",
+            "answer": "<p>Bleach-based cleaners are built for instant results: spray, wait, rinse. Soak n Go contains no bleach and no acid, needs no rinsing, and works with the weather over weeks — so the result lasts instead of being rinsed down the drain. Fast results you rinse off, versus lasting results you walk away from.</p>"
+          }
+        },
+        "q-14": {
+          "type": "question",
+          "settings": {
+            "question": "How is this different from spray-on concentrates?",
+            "answer": "<p>Same walk-away philosophy, less faff. Soak n Go's hose-end bottle clicks straight onto your garden hose — no mixing, no pump sprayer, no measuring. It's NZ made and owned, designed by a professional exterior cleaning company, and Subscribe &amp; Save means you're never standing at the shed door with an empty bottle.</p>"
+          }
+        },
+        "q-15": {
+          "type": "question",
+          "settings": {
+            "question": "Who actually makes Soak n Go?",
+            "answer": "<p>Maximum Wash Ltd — a professional exterior cleaning company with around 20 staff washing buildings across Auckland, Tauranga and Christchurch. This is the product we'd use at home.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "g-using", "q-1", "q-2", "q-3", "q-4", "q-5",
+        "g-safety", "q-6", "q-7", "q-8",
+        "g-coverage", "q-9", "q-10",
+        "g-subs", "q-11", "q-12",
+        "g-vs", "q-13", "q-14", "q-15"
+      ],
+      "settings": {
+        "kicker": "Everything we get asked",
+        "heading": "Questions & answers",
+        "subheading": "If it's not here, ask us — we wash buildings for a living, we've heard it all.",
+        "centre_heading": false,
+        "enable_schema": true,
+        "cta_label": "Still curious? Get in touch",
+        "cta_link": "/pages/contact"
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {}
+    }
+  },
+  "order": ["main", "cta"]
+}

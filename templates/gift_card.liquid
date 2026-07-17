@@ -1,0 +1,44 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros -%}
+  <title>{{ 'gift_cards.issued.title' | t: value: formatted_initial_value, shop: shop.name }}</title>
+  {% render 'css-variables' %}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+</head>
+<body class="template-gift-card">
+  <main class="password-page">
+    <div class="password-card">
+      <span class="site-header__logo" style="font-size: 2rem;">Soak<span class="logo-go" style="color: var(--color-secondary);">&nbsp;n&nbsp;Go</span></span>
+      <h1 class="h2">{{ 'gift_cards.issued.subtext' | t }}</h1>
+      <p class="display" style="font-size: 3rem;">{{ gift_card.initial_value | money }}</p>
+
+      {%- if gift_card.enabled == false or gift_card.expired -%}
+        <p class="badge badge--navy">{{ 'gift_cards.issued.expired' | t }}</p>
+      {%- elsif gift_card.balance != gift_card.initial_value -%}
+        {%- assign balance_money = gift_card.balance | money -%}
+        <p class="badge badge--accent">{{ 'gift_cards.issued.remaining' | t: balance: balance_money }}</p>
+      {%- endif -%}
+
+      <p class="h3" style="letter-spacing: 0.12em; border: 2px dashed var(--color-line); border-radius: var(--radius-s); padding: var(--space-3);">
+        {{ gift_card.code | format_code }}
+      </p>
+
+      <img
+        src="{{ gift_card.qr_identifier | qr_code }}"
+        alt="QR code — scan to redeem gift card"
+        width="120"
+        height="120"
+        style="margin-inline: auto;"
+      >
+
+      <a href="{{ shop.url }}" class="btn btn--primary btn--full" target="_blank" rel="noopener">{{ 'gift_cards.issued.shop_link' | t }}</a>
+      <button type="button" class="btn btn--secondary btn--full" onclick="window.print();">{{ 'gift_cards.issued.print' | t }}</button>
+    </div>
+  </main>
+</body>
+</html>

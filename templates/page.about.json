@@ -1,0 +1,86 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rich-text",
+      "settings": {
+        "kicker": "About Soak n Go",
+        "heading": "We wash buildings for a living. This is the product we'd use at home.",
+        "content": "<p>Soak n Go comes from Maximum Wash Ltd — a professional exterior cleaning company with around 20 staff washing houses, apartment blocks and commercial buildings across Auckland, Tauranga and Christchurch. After years of watching supermarket products under-deliver, we bottled the approach we actually trust.</p>",
+        "cta_label": "",
+        "centre": true,
+        "soft_background": false
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "kicker": "The story",
+        "heading": "Born on the end of a wand",
+        "content": "<p>When you wash buildings every day, you learn what actually kills moss, mould, algae and lichen — and what just moves it around for a photo. You also learn that the harshest chemical isn't the smartest one: the smartest one is the one that keeps working after the crew's gone home.</p><p>Soak n Go is that thinking in a bottle that clicks onto your garden hose. No acid, no bleach, no scrubbing, no rinsing. Soak once, walk away, and let the weather do the labour.</p>",
+        "placeholder_label": "PHOTO — crew washing a building",
+        "cta_label": "",
+        "flip": false
+      }
+    },
+    "founder": {
+      "type": "image-with-text",
+      "settings": {
+        "kicker": "A note from Bas",
+        "heading": "Why we bottled it",
+        "content": "<p>“I've spent years quoting building washes, and the same conversation kept happening at the front gate: 'What can I use myself between washes?' I never had a good answer — everything on the shelf was either bleach in a fancy bottle or a science project with a pump sprayer.</p><p>So we made the answer. Soak n Go is what I put on my own place. Click it on, soak it, put the hose away. The weather's going to be working on your house all year anyway — this just puts it on the payroll.”</p><p><strong>— Bas, Maximum Wash Ltd</strong></p>",
+        "placeholder_label": "PHOTO — Bas, founder portrait",
+        "cta_label": "",
+        "flip": true,
+        "soft_background": true
+      }
+    },
+    "values": {
+      "type": "multicolumn",
+      "blocks": {
+        "col-1": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "heading": "No nasty chemicals",
+            "text": "No acid, no bleach, no chlorine. Clean without dousing the place in bleach every spring."
+          }
+        },
+        "col-2": {
+          "type": "column",
+          "settings": {
+            "icon": "pin",
+            "heading": "NZ owned & made",
+            "text": "Formulated, bottled and shipped right here, for NZ weatherboard, NZ moss and NZ weather."
+          }
+        },
+        "col-3": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "heading": "Professional standards",
+            "text": "We answer for results on other people's buildings every day. Your fence gets the same standard."
+          }
+        }
+      },
+      "block_order": ["col-1", "col-2", "col-3"],
+      "settings": {
+        "kicker": "What we stand for",
+        "heading": "The non-negotiables",
+        "columns": "3"
+      }
+    },
+    "guarantee": {
+      "type": "rich-text",
+      "settings": {
+        "kicker": "The guarantee",
+        "heading": "If it doesn't work, we'll make it right",
+        "content": "<p>We know what clean looks like — and what it doesn't. If Soak n Go doesn't shift it, get in touch and we'll sort you out.</p>",
+        "cta_label": "Shop Soak n Go",
+        "cta_primary": true,
+        "centre": true,
+        "soft_background": true
+      }
+    }
+  },
+  "order": ["hero", "story", "founder", "values", "guarantee"]
+}

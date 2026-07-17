@@ -1,0 +1,21 @@
+<div class="container account-page">
+  <div class="auth-card">
+    <h1>{{ 'customer.activate_account.title' | t }}</h1>
+    <p class="muted">{{ 'customer.activate_account.subtext' | t }}</p>
+    {%- form 'activate_customer_password' -%}
+      {%- if form.errors -%}
+        <div class="form-status form-status--error">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+      <div class="field">
+        <label for="ActivatePassword">{{ 'customer.activate_account.password' | t }}</label>
+        <input id="ActivatePassword" type="password" name="customer[password]" autocomplete="new-password" required>
+      </div>
+      <div class="field">
+        <label for="ActivatePasswordConfirm">{{ 'customer.activate_account.password_confirm' | t }}</label>
+        <input id="ActivatePasswordConfirm" type="password" name="customer[password_confirmation]" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">{{ 'customer.activate_account.submit' | t }}</button>
+      <button type="submit" name="decline" class="btn btn--secondary btn--full" style="margin-top: var(--space-2);">{{ 'customer.activate_account.cancel' | t }}</button>
+    {%- endform -%}
+  </div>
+</div>

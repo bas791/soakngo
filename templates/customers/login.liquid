@@ -1,0 +1,53 @@
+<div class="container account-page">
+  <div class="auth-card">
+    <h1>{{ 'customer.login.title' | t }}</h1>
+
+    {%- form 'customer_login', novalidate: 'novalidate' -%}
+      {%- if form.errors -%}
+        <div class="form-status form-status--error">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+      <div class="field">
+        <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+        <input id="CustomerEmail" type="email" name="customer[email]" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+        <input id="CustomerPassword" type="password" name="customer[password]" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">{{ 'customer.login.submit' | t }}</button>
+      <div class="auth-links">
+        <a href="#recover">{{ 'customer.login.forgot_password' | t }}</a>
+        <a href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a>
+      </div>
+    {%- endform -%}
+  </div>
+
+  <div class="auth-card" id="recover" style="margin-top: var(--space-5);">
+    <h2 class="h3">{{ 'customer.recover_password.title' | t }}</h2>
+    <p class="muted small">{{ 'customer.recover_password.subtext' | t }}</p>
+    {%- form 'recover_customer_password' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="form-status form-status--success">{{ 'customer.recover_password.success' | t }}</p>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <div class="form-status form-status--error">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+      <div class="field">
+        <label for="RecoverEmail">{{ 'customer.login.email' | t }}</label>
+        <input id="RecoverEmail" type="email" name="email" autocomplete="email" required>
+      </div>
+      <button type="submit" class="btn btn--secondary btn--full">{{ 'customer.recover_password.submit' | t }}</button>
+    {%- endform -%}
+  </div>
+
+  {%- if shop.checkout.guest_login -%}
+    <div class="auth-card" style="margin-top: var(--space-5);">
+      <h2 class="h3">{{ 'customer.login.guest_title' | t }}</h2>
+      {%- form 'guest_login' -%}
+        <button type="submit" class="btn btn--secondary btn--full">{{ 'customer.login.guest_continue' | t }}</button>
+      {%- endform -%}
+    </div>
+  {%- endif -%}
+</div>

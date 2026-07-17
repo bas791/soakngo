@@ -1,0 +1,42 @@
+<div class="container account-page">
+  <p><a href="{{ routes.account_url }}" class="link-arrow">{{ 'customer.account.return' | t }}</a></p>
+  <h1 style="margin-block: var(--space-4) var(--space-6);">{{ 'customer.addresses.title' | t }}</h1>
+
+  <details class="faq-item" style="max-width: 28rem; margin-bottom: var(--space-6);">
+    <summary>{{ 'customer.addresses.add_new' | t }} {% render 'icon', name: 'chevron', size: 20 %}</summary>
+    <div class="faq-item__answer">
+      {%- form 'customer_address', customer.new_address -%}
+        {% render 'address-form-fields', form: form %}
+        <button type="submit" class="btn btn--primary">{{ 'customer.addresses.save' | t }}</button>
+      {%- endform -%}
+    </div>
+  </details>
+
+  <div class="grid grid--3">
+    {%- paginate customer.addresses by 12 -%}
+      {%- for address in customer.addresses -%}
+        <div class="address-card">
+          {%- if address == customer.default_address -%}
+            <span class="badge badge--accent" style="margin-bottom: var(--space-2);">{{ 'customer.addresses.default' | t }}</span>
+          {%- endif -%}
+          <p class="small">{{ address | format_address }}</p>
+          <details style="margin-top: var(--space-3);">
+            <summary class="link-arrow" style="cursor: pointer;">{{ 'customer.addresses.edit' | t }}</summary>
+            {%- form 'customer_address', address -%}
+              {% render 'address-form-fields', form: form, address: address %}
+              <label style="display: flex; gap: var(--space-2); align-items: center; margin-bottom: var(--space-3);" class="small">
+                <input type="checkbox" name="address[default]" value="1" {% if address == customer.default_address %}checked{% endif %}>
+                {{ 'customer.addresses.set_default' | t }}
+              </label>
+              <button type="submit" class="btn btn--primary">{{ 'customer.addresses.update' | t }}</button>
+            {%- endform -%}
+          </details>
+          <form method="post" action="/account/addresses/{{ address.id }}" style="margin-top: var(--space-2);" onsubmit="return confirm('{{ 'customer.addresses.delete_confirm' | t }}');">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="cart-line__remove">{{ 'customer.addresses.delete' | t }}</button>
+          </form>
+        </div>
+      {%- endfor -%}
+    {%- endpaginate -%}
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {}
+    },
+    "range": {
+      "type": "product-range",
+      "settings": {
+        "kicker": "While you're here",
+        "heading": "The range",
+        "subheading": "",
+        "columns": "4",
+        "show_bundle_nudge": false,
+        "soft_background": true
+      }
+    }
+  },
+  "order": ["main", "range"]
+}

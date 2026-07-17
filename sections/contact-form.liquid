@@ -1,0 +1,96 @@
+<section class="section">
+  <div class="container">
+    <div class="grid grid--2" style="align-items: start;">
+      <div>
+        <div class="section-head" style="margin-bottom: var(--space-5);">
+          {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+          <h1>{{ section.settings.heading }}</h1>
+          {%- if section.settings.text != blank -%}<p class="lede">{{ section.settings.text }}</p>{%- endif -%}
+        </div>
+
+        {%- form 'contact' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="form-status form-status--success">{{ 'contact.form.success' | t }}</p>
+          {%- elsif form.errors -%}
+            <div class="form-status form-status--error">
+              <p>{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+            </div>
+          {%- endif -%}
+          <div class="field">
+            <label for="ContactName">{{ 'contact.form.name' | t }}</label>
+            <input id="ContactName" type="text" name="contact[name]" value="{{ form.name }}" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="ContactEmail">{{ 'contact.form.email' | t }}</label>
+            <input id="ContactEmail" type="email" name="contact[email]" value="{{ form.email }}" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="ContactPhone">{{ 'contact.form.phone' | t }}</label>
+            <input id="ContactPhone" type="tel" name="contact[phone]" value="{{ form.phone }}" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="ContactMessage">{{ 'contact.form.message' | t }}</label>
+            <textarea id="ContactMessage" name="contact[body]" required>{{ form.body }}</textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--large">{{ 'contact.form.submit' | t }}</button>
+        {%- endform -%}
+      </div>
+
+      <aside>
+        {%- comment -%} Maximum Wash cross-referral block {%- endcomment -%}
+        {%- if section.settings.show_referral -%}
+          <div class="calc" style="border-color: var(--color-secondary);">
+            <p class="kicker">{{ section.settings.referral_kicker }}</p>
+            <h2 class="h3" style="margin-bottom: var(--space-3);">{{ section.settings.referral_heading }}</h2>
+            <p>{{ section.settings.referral_text }}</p>
+            {%- if section.settings.referral_cta_label != blank and section.settings.referral_link != blank -%}
+              <p style="margin-top: var(--space-4);">
+                <a href="{{ section.settings.referral_link }}" class="btn btn--navy">{{ section.settings.referral_cta_label }}</a>
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <div style="margin-top: var(--space-5);">
+          <h3 class="h4" style="margin-bottom: var(--space-3);">{{ section.settings.aside_heading }}</h3>
+          <p class="muted">{{ section.settings.aside_text }}</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Say g'day" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get in touch" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro",
+      "default": "Question about the product, your order, or whether that thing growing on your roof is normal? We'll come back to you within one working day."
+    },
+    { "type": "checkbox", "id": "show_referral", "label": "Show Maximum Wash referral block", "default": true },
+    { "type": "text", "id": "referral_kicker", "label": "Referral kicker", "default": "Big job?" },
+    { "type": "text", "id": "referral_heading", "label": "Referral heading", "default": "Need a professional instead?" },
+    {
+      "type": "textarea",
+      "id": "referral_text",
+      "label": "Referral text",
+      "default": "Some jobs want a crew, not a bottle — multi-storey buildings, commercial sites, or a house that's overdue by a decade. Maximum Wash (the professional company behind Soak n Go) can quote your building wash in Auckland, Tauranga and Christchurch."
+    },
+    { "type": "text", "id": "referral_cta_label", "label": "Referral button label", "default": "Get a Maximum Wash quote" },
+    { "type": "url", "id": "referral_link", "label": "Referral link" },
+    { "type": "text", "id": "aside_heading", "label": "Aside heading", "default": "Order queries" },
+    {
+      "type": "textarea",
+      "id": "aside_text",
+      "label": "Aside text",
+      "default": "Include your order number if you have one — it saves a round trip. Subscription changes (pause, skip, cancel) are quickest from the link in any subscription email."
+    }
+  ],
+  "presets": [{ "name": "Contact form" }]
+}
+{% endschema %}

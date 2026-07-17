@@ -1,0 +1,74 @@
+<article class="container section" itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="article-header">
+    <p class="kicker"><a href="{{ blog.url }}" style="color: inherit; text-decoration: none;">{{ blog.title }}</a></p>
+    <h1 itemprop="headline">{{ article.title }}</h1>
+    <p class="small muted">
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ article.published_at | date: '%-d %B %Y' }}</time>
+      {%- if section.settings.show_author %} · {{ 'blogs.article.written_by' | t: author: article.author }}{% endif -%}
+    </p>
+  </header>
+
+  {%- if article.image -%}
+    <div class="media-frame" style="max-width: 56rem; margin: 0 auto var(--space-6); aspect-ratio: 16/9;">
+      <img
+        src="{{ article.image | image_url: width: 1400 }}"
+        srcset="{{ article.image | image_url: width: 800 }} 800w, {{ article.image | image_url: width: 1400 }} 1400w"
+        sizes="(min-width: 900px) 56rem, 100vw"
+        width="1400" height="788"
+        alt="{{ article.image.alt | default: article.title | escape }}"
+        itemprop="image"
+      >
+    </div>
+  {%- endif -%}
+
+  <div class="article-body" itemprop="articleBody">
+    {{ article.content }}
+  </div>
+
+  <footer class="article-body" style="margin-top: var(--space-8);">
+    <a href="{{ blog.url }}" class="link-arrow">{% render 'icon', name: 'arrow', size: 16 %} {{ 'blogs.article.back_to_blog' | t }}</a>
+  </footer>
+</article>
+
+{%- if section.settings.show_cta -%}
+  <section class="section section--navy">
+    <div class="container container--narrow text-center">
+      <h2>{{ section.settings.cta_heading }}</h2>
+      <p class="lede" style="margin: var(--space-3) auto var(--space-5);">{{ section.settings.cta_text }}</p>
+      <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--large">{{ section.settings.cta_label }}</a>
+    </div>
+  </section>
+{%- endif -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ article.title | json }},
+  "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json }},
+  {% if article.image %}"image": [{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}],{% endif %}
+  "author": { "@type": "Organization", "name": {{ shop.name | json }} },
+  "publisher": { "@type": "Organization", "name": {{ shop.name | json }} },
+  "mainEntityOfPage": {{ request.origin | append: article.url | json }},
+  "description": {{ article.excerpt_or_content | strip_html | truncatewords: 40 | json }}
+}
+</script>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": [
+    { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
+    { "type": "checkbox", "id": "show_cta", "label": "Show CTA at the end", "default": true },
+    { "type": "text", "id": "cta_heading", "label": "CTA heading", "default": "Ready to soak and walk away?" },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "No acid, no bleach, no scrub, no rinse. Click it onto the hose and let the weather earn its keep."
+    },
+    { "type": "text", "id": "cta_label", "label": "CTA button label", "default": "Shop Soak n Go" },
+    { "type": "url", "id": "cta_link", "label": "CTA button link" }
+  ]
+}
+{% endschema %}

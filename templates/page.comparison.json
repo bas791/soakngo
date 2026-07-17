@@ -1,0 +1,94 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "kicker": "The honest comparison",
+        "heading": "Soak n Go vs the others",
+        "content": "<p>If you're standing in an aisle (or a search results page) comparing us with fast-acting bleach cleaners and mix-it-yourself concentrates — good. Compare away. Here's the whole picture, feature by feature, in plain English.</p>",
+        "cta_label": "",
+        "centre": true
+      }
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "blocks": {
+        "row-1": { "type": "row", "settings": { "label": "No bleach", "us": "tick", "a": "cross", "b": "tick" } },
+        "row-2": { "type": "row", "settings": { "label": "No acid", "us": "tick", "a": "cross", "b": "tick" } },
+        "row-3": { "type": "row", "settings": { "label": "No scrubbing", "us": "tick", "a": "text", "a_text": "Sometimes", "b": "tick" } },
+        "row-4": { "type": "row", "settings": { "label": "No rinsing", "us": "tick", "a": "cross", "b": "tick" } },
+        "row-5": { "type": "row", "settings": { "label": "No mixing — clicks onto the hose", "us": "tick", "a": "cross", "b": "cross" } },
+        "row-6": { "type": "row", "settings": { "label": "Keeps working for weeks after application", "us": "tick", "a": "cross", "b": "tick" } },
+        "row-7": { "type": "row", "settings": { "label": "NZ made & owned", "us": "tick", "a": "text", "a_text": "Varies", "b": "text", "b_text": "Varies" } },
+        "row-8": { "type": "row", "settings": { "label": "Made by professional exterior cleaners", "us": "tick", "a": "cross", "b": "cross" } },
+        "row-9": { "type": "row", "settings": { "label": "Subscribe & Save so you never run out", "us": "tick", "a": "cross", "b": "cross" } }
+      },
+      "block_order": ["row-1", "row-2", "row-3", "row-4", "row-5", "row-6", "row-7", "row-8", "row-9"],
+      "settings": {
+        "kicker": "",
+        "heading": "Feature by feature",
+        "subheading": "",
+        "soft_background": true,
+        "cta_label": "Shop Soak n Go",
+        "cta_primary": true
+      }
+    },
+    "vs-bleach": {
+      "type": "rich-text",
+      "settings": {
+        "kicker": "vs fast-acting bleach cleaners",
+        "heading": "Fast results you rinse off vs lasting results you walk away from",
+        "content": "<p>Bleach-based cleaners (the '30 seconds' style of product) are genuinely fast — that's their whole pitch. The trade-off is the bleach itself: the fumes, the careful handling, protecting everything nearby, and rinsing the result away when you're done. And because the active washes off, the growth gets to start again from scratch.</p><p>Soak n Go makes the opposite trade. No bleach, no acid, nothing to rinse. You lose the instant gratification and gain a result that keeps improving for weeks and holds for much longer. Soak once, walk away.</p>",
+        "cta_label": "",
+        "centre": false
+      }
+    },
+    "vs-concentrates": {
+      "type": "rich-text",
+      "settings": {
+        "kicker": "vs spray-on concentrates",
+        "heading": "Same patience. Way less faff.",
+        "content": "<p>Mix-it-yourself concentrates (the 'wet and forget it' style of product) share our walk-away philosophy — we're not going to pretend otherwise. Where we differ is everything around the formula: Soak n Go's hose-end bottle clicks straight onto the garden hose with no mixing, no pump sprayer and no measuring jug. It's NZ made and owned, designed by a professional exterior cleaning company that washes buildings every day, and Subscribe &amp; Save keeps a refill turning up before you run out.</p>",
+        "cta_label": "",
+        "centre": false,
+        "soft_background": true
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "Why don't you name specific competitor products in the table?",
+            "answer": "<p>Because formulations change and we'd rather compare honestly on category characteristics — bleach-based fast-acting cleaners versus mix-yourself concentrates — than argue over someone else's label. Check any product's label against ours and draw your own conclusions.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "Is slower actually better?",
+            "answer": "<p>For lasting results outdoors, yes. Weather-activated cleaning keeps working on the growth and its regrowth for weeks. Instant products give you a great Saturday-afternoon photo; the question is what it looks like in six months.</p>"
+          }
+        }
+      },
+      "block_order": ["q-1", "q-2"],
+      "settings": {
+        "kicker": "Fair questions",
+        "heading": "About this comparison",
+        "enable_schema": false
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "kicker": "Comparison over",
+        "heading": "Try the walk-away method",
+        "text": "One 2L hose-end bottle covers up to 250 m². If it doesn't work, we'll make it right.",
+        "cta_label": "Shop Soak n Go",
+        "navy_style": true
+      }
+    }
+  },
+  "order": ["intro", "comparison", "vs-bleach", "vs-concentrates", "faq", "cta"]
+}

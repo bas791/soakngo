@@ -1,0 +1,59 @@
+<div class="container account-page">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-6);">
+    <h1>{{ 'customer.account.title' | t }}</h1>
+    <a href="{{ routes.account_logout_url }}" class="link-arrow">{{ 'customer.account.log_out' | t }}</a>
+  </div>
+
+  <div class="grid grid--2" style="align-items: start;">
+    <div>
+      <h2 class="h3" style="margin-bottom: var(--space-4);">{{ 'customer.orders.title' | t }}</h2>
+      {%- paginate customer.orders by 10 -%}
+        {%- if customer.orders.size > 0 -%}
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for order in customer.orders -%}
+                  <tr>
+                    <td><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+                    <td>{{ order.created_at | date: '%-d %b %Y' }}</td>
+                    <td>{{ order.financial_status_label }}</td>
+                    <td>{{ order.fulfillment_status_label }}</td>
+                    <td>{{ order.total_price | money }}</td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" aria-label="Pagination">
+              {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">{{ 'general.pagination.previous' | t }}</a>{%- endif -%}
+              {%- if paginate.next -%}<a href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }}</a>{%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- else -%}
+          <p class="muted">{{ 'customer.orders.none' | t }}</p>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+
+    <aside class="address-card">
+      <h2 class="h4" style="margin-bottom: var(--space-3);">{{ 'customer.account.details' | t }}</h2>
+      <p>{{ customer.name }}<br>{{ customer.email }}</p>
+      {%- if customer.default_address -%}
+        <p class="muted small" style="margin-top: var(--space-3);">{{ customer.default_address | format_address }}</p>
+      {%- endif -%}
+      <p style="margin-top: var(--space-4);">
+        <a href="{{ routes.account_addresses_url }}" class="link-arrow">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+      </p>
+    </aside>
+  </div>
+</div>
