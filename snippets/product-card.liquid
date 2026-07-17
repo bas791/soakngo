@@ -1,0 +1,56 @@
+{%- comment -%}
+  Product card.
+  Usage: {% render 'product-card', product: product, show_cta: true %}
+  Optional metafields (see METAFIELDS.md):
+    soakngo.flag           — short card flag, e.g. "Most popular"
+    soakngo.coverage_m2    — coverage in square metres
+    soakngo.volume_litres  — volume for per-litre value
+    soakngo.card_blurb     — one-line "who it's for"
+{%- endcomment -%}
+{%- liquid
+  assign flag = product.metafields.soakngo.flag.value
+  assign coverage = product.metafields.soakngo.coverage_m2.value
+  assign blurb = product.metafields.soakngo.card_blurb.value
+-%}
+<article class="product-card">
+  {%- if flag != blank -%}
+    <span class="product-card__flag badge badge--accent">{{ flag }}</span>
+  {%- endif -%}
+  <div class="product-card__media">
+    {%- if product.featured_media -%}
+      <img
+        src="{{ product.featured_media | image_url: width: 600 }}"
+        srcset="{{ product.featured_media | image_url: width: 300 }} 300w, {{ product.featured_media | image_url: width: 600 }} 600w, {{ product.featured_media | image_url: width: 900 }} 900w"
+        sizes="(min-width: 750px) 300px, 90vw"
+        width="600"
+        height="600"
+        loading="lazy"
+        alt="{{ product.featured_media.alt | default: product.title | escape }}"
+      >
+    {%- else -%}
+      {% render 'ph-image', label: product.title, ratio: '1x1' %}
+    {%- endif -%}
+  </div>
+  <div class="product-card__body">
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    {%- if blurb != blank -%}
+      <p class="product-card__meta">{{ blurb }}</p>
+    {%- endif -%}
+    {%- if coverage -%}
+      <p class="product-card__meta">
+        {%- assign coverage_str = coverage | append: '' -%}
+        {{ 'products.product.covers_up_to' | t: area: coverage_str }}
+      </p>
+    {%- endif -%}
+    <div class="product-card__price-row">
+      {% render 'price', product: product, show_per_litre: true %}
+    </div>
+  </div>
+  {%- if show_cta -%}
+    <div class="product-card__cta">
+      <a href="{{ product.url }}" class="btn btn--secondary btn--full">{{ 'products.product.view_details' | t }}</a>
+    </div>
+  {%- endif -%}
+</article>

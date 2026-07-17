@@ -1,0 +1,78 @@
+{%- liquid
+  assign products_to_show = section.settings.products
+  if products_to_show.count == 0 and section.settings.collection != blank
+    assign products_to_show = section.settings.collection.products
+  endif
+-%}
+<section class="section{% if section.settings.soft_background %} section--soft{% endif %}">
+  <div class="container">
+    <div class="section-head{% if section.settings.centre_heading %} section-head--center{% endif %}">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="lede">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- if products_to_show.count > 0 -%}
+        {%- for product in products_to_show limit: 4 -%}
+          {% render 'product-card', product: product, show_cta: section.settings.show_cta %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <article class="product-card">
+            <div class="product-card__media">
+              {% render 'ph-image', label: 'PRODUCT — bottle on white', ratio: '1x1' %}
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Product {{ i }}</h3>
+              <p class="product-card__meta">Assign products or a collection in the theme editor.</p>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_bundle_nudge and settings.bundle_note != blank -%}
+      <p class="text-center" style="margin-top: var(--space-6);">
+        <span class="badge badge--accent" style="font-size: var(--text-small); padding: 0.5rem 1rem;">{{ settings.bundle_note }}</span>
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+      <p class="text-center" style="margin-top: var(--space-5);">
+        <a href="{{ section.settings.cta_link }}" class="btn btn--secondary">{{ section.settings.cta_label }}</a>
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product range",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "The range" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "One formula, four sizes" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Same stuff the pros use, sized for your job. Start with the hose-end sprayer, keep it going with refills." },
+    { "type": "checkbox", "id": "centre_heading", "label": "Centre the heading", "default": true },
+    { "type": "product_list", "id": "products", "label": "Products", "limit": 4 },
+    { "type": "collection", "id": "collection", "label": "Or pick a collection", "info": "Used when no products are selected above." },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    { "type": "checkbox", "id": "show_cta", "label": "Show card buttons", "default": true },
+    { "type": "checkbox", "id": "show_bundle_nudge", "label": "Show multi-buy nudge", "default": true },
+    { "type": "checkbox", "id": "soft_background", "label": "Soft background", "default": false },
+    { "type": "text", "id": "cta_label", "label": "Bottom button label" },
+    { "type": "url", "id": "cta_link", "label": "Bottom button link" }
+  ],
+  "presets": [{ "name": "Product range" }]
+}
+{% endschema %}

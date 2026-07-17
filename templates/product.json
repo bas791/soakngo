@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "kicker": { "type": "kicker", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "coverage": { "type": "coverage", "settings": {} },
+        "intro": {
+          "type": "text",
+          "settings": {
+            "richtext": "<p>Click it onto the hose, soak the surface, walk away. The weather does the slow work — moss, mould and lichen fade over the following weeks and stay gone for ages.</p>"
+          }
+        },
+        "ladder": {
+          "type": "ladder",
+          "settings": { "heading": "Pick your size" }
+        },
+        "selling-plan": {
+          "type": "selling_plan",
+          "settings": { "subscribe_default": false }
+        },
+        "bundler": { "type": "bundler", "settings": {} },
+        "quantity": { "type": "quantity", "settings": {} },
+        "buy-buttons": {
+          "type": "buy_buttons",
+          "settings": { "show_express": true }
+        },
+        "coverage-calc": {
+          "type": "coverage_calc",
+          "settings": {}
+        },
+        "trust-row": { "type": "trust_row", "settings": {} },
+        "description": { "type": "description", "settings": {} },
+        "comparison": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How it compares",
+            "content": "<p>Bleach-based cleaners work fast — then you rinse the result (and the bleach) down the garden. Spray-on concentrates need mixing and a pump sprayer. Soak n Go clicks onto the hose, needs no mixing, no scrubbing and no rinsing, and the result keeps improving for weeks.</p>",
+            "link_label": "See the full comparison",
+            "link": "shopify://pages/soak-n-go-vs-the-others"
+          }
+        },
+        "safety": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Safety & the garden",
+            "content": "<p>No acid, no bleach, no chlorine fumes. Safe around plants, kids and pets when used as directed. Keep it off wanted moss (some people love their rock-garden moss — no judgement).</p>",
+            "link_label": "",
+            "open_default": false
+          }
+        },
+        "delivery": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Delivery & guarantee",
+            "content": "<p>NZ-wide delivery in 2–4 working days, free over $79. If it doesn't work, we'll make it right — we wash buildings for a living, so we know what clean looks like.</p>",
+            "link_label": "",
+            "open_default": false
+          }
+        }
+      },
+      "block_order": [
+        "kicker",
+        "title",
+        "price",
+        "coverage",
+        "intro",
+        "ladder",
+        "selling-plan",
+        "bundler",
+        "quantity",
+        "buy-buttons",
+        "coverage-calc",
+        "trust-row",
+        "description",
+        "comparison",
+        "safety",
+        "delivery"
+      ],
+      "settings": {
+        "show_before_after": true,
+        "show_sticky_atc": true
+      }
+    },
+    "product-faq": {
+      "type": "faq",
+      "settings": {
+        "kicker": "Good questions",
+        "heading": "Before you ask",
+        "enable_schema": false
+      }
+    },
+    "cross-sell": {
+      "type": "product-range",
+      "settings": {
+        "kicker": "Goes well with",
+        "heading": "Complete the kit",
+        "subheading": "Grab a refill now and you won't be back on the ladder wondering where the rest of it went.",
+        "columns": "3",
+        "show_bundle_nudge": true,
+        "cta_label": "",
+        "soft_background": true
+      }
+    }
+  },
+  "order": ["main", "product-faq", "cross-sell"]
+}

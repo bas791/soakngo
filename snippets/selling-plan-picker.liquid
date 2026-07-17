@@ -1,0 +1,91 @@
+{%- comment -%}
+  One-time vs Subscribe & Save picker, built on standard Shopify selling_plan
+  objects so it works with any subscription app that uses native Shopify
+  subscription APIs (Seal Subscriptions recommended — see README.md).
+
+  Usage (inside the product <form>):
+    {% render 'selling-plan-picker', product: product, subscribe_default: true %}
+
+  Savings are framed in dollars, not just percent, per the conversion spec.
+  If the product has no selling plans yet (app not configured), the picker
+  renders nothing and the product sells one-time only.
+{%- endcomment -%}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign group = product.selling_plan_groups | first
+-%}
+{%- if group and variant.selling_plan_allocations.size > 0 -%}
+  {%- liquid
+    assign first_allocation = variant.selling_plan_allocations | first
+    assign first_plan = first_allocation.selling_plan
+    assign default_sub = false
+    if subscribe_default and product.requires_selling_plan != true
+      assign default_sub = true
+    endif
+    if product.requires_selling_plan
+      assign default_sub = true
+    endif
+    assign has_frequencies = false
+    if variant.selling_plan_allocations.size > 1
+      assign has_frequencies = true
+    endif
+  -%}
+  <selling-plan-picker class="plan-picker" data-product-id="{{ product.id }}">
+    <input type="hidden" name="selling_plan" value="{% if default_sub %}{{ first_plan.id }}{% endif %}" {% if form_id %}form="{{ form_id }}"{% endif %}>
+
+    {%- unless product.requires_selling_plan -%}
+      <label class="plan-picker__option">
+        <span class="plan-picker__row">
+          <input
+            type="radio"
+            name="purchase_option_{{ product.id }}"
+            data-selling-plan=""
+            data-price="{{ variant.price }}"
+            {% unless default_sub %}checked{% endunless %}
+          >
+          <span class="plan-picker__label">{{ 'products.product.one_time' | t }}</span>
+          <span class="plan-picker__price">{{ variant.price | money }}</span>
+        </span>
+      </label>
+    {%- endunless -%}
+
+    <label class="plan-picker__option">
+      <span class="plan-picker__row">
+        <input
+          type="radio"
+          name="purchase_option_{{ product.id }}"
+          data-selling-plan="{{ first_plan.id }}"
+          data-price="{{ first_allocation.price }}"
+          data-has-frequencies="{{ has_frequencies }}"
+          {% if default_sub %}checked{% endif %}
+        >
+        <span class="plan-picker__label">
+          {{ settings.subscribe_label | default: 'Subscribe &amp; Save' }}
+          {%- assign saving = variant.price | minus: first_allocation.price -%}
+          {%- if saving > 0 -%}
+            {%- assign saving_money = saving | money -%}
+            <span class="plan-picker__save">{{ 'products.product.save_amount' | t: amount: saving_money }}</span>
+          {%- endif -%}
+        </span>
+        <span class="plan-picker__price">{{ first_allocation.price | money }}</span>
+      </span>
+      {%- if has_frequencies -%}
+        <span class="plan-picker__frequency" data-plan-frequency-wrap {% unless default_sub %}hidden{% endunless %}>
+          <label class="visually-hidden" for="PlanFrequency-{{ product.id }}">Delivery frequency</label>
+          <select id="PlanFrequency-{{ product.id }}" class="input" data-plan-frequency>
+            {%- for allocation in variant.selling_plan_allocations -%}
+              <option value="{{ allocation.selling_plan.id }}" data-price="{{ allocation.price }}">
+                {{ allocation.selling_plan.name }}
+              </option>
+            {%- endfor -%}
+          </select>
+        </span>
+      {%- endif -%}
+    </label>
+
+    <p class="plan-picker__reassure">
+      {% render 'icon', name: 'tick', size: 14 %}
+      {{ settings.subscribe_reassurance }}
+    </p>
+  </selling-plan-picker>
+{%- endif -%}

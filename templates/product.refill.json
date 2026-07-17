@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "kicker": {
+          "type": "kicker",
+          "settings": { "text": "The never-run-out bottle" }
+        },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "coverage": { "type": "coverage", "settings": {} },
+        "intro": {
+          "type": "text",
+          "settings": {
+            "richtext": "<p>Keep your hose-end sprayer, click in the refill, keep the place immaculate. On Subscribe &amp; Save it turns up before you run out — cheaper every time, no thinking required.</p>"
+          }
+        },
+        "selling-plan": {
+          "type": "selling_plan",
+          "settings": { "subscribe_default": true }
+        },
+        "bundler": { "type": "bundler", "settings": {} },
+        "quantity": { "type": "quantity", "settings": {} },
+        "buy-buttons": {
+          "type": "buy_buttons",
+          "settings": { "show_express": true }
+        },
+        "ladder": {
+          "type": "ladder",
+          "settings": { "heading": "Need more grunt?" }
+        },
+        "trust-row": { "type": "trust_row", "settings": {} },
+        "description": { "type": "description", "settings": {} },
+        "subscription-details": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How Subscribe & Save works",
+            "content": "<p>Pick a delivery rhythm that matches your place — most Kiwi homes do well on a refill every 3 months. Every delivery is discounted, in dollars you can see, and you can pause, skip or cancel anytime from a link in your email. No lock-in, no phone calls, no \"retention specialists\".</p>",
+            "link_label": "",
+            "open_default": true
+          }
+        },
+        "comparison": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How it compares",
+            "content": "<p>Bleach-based cleaners work fast — then you rinse the result (and the bleach) down the garden. Spray-on concentrates need mixing and a pump sprayer. Soak n Go clicks onto the hose, needs no mixing, no scrubbing and no rinsing, and the result keeps improving for weeks.</p>",
+            "link_label": "See the full comparison",
+            "link": "shopify://pages/soak-n-go-vs-the-others"
+          }
+        }
+      },
+      "block_order": [
+        "kicker",
+        "title",
+        "price",
+        "coverage",
+        "intro",
+        "selling-plan",
+        "bundler",
+        "quantity",
+        "buy-buttons",
+        "ladder",
+        "trust-row",
+        "description",
+        "subscription-details",
+        "comparison"
+      ],
+      "settings": {
+        "show_before_after": false,
+        "show_sticky_atc": true
+      }
+    },
+    "subscribe-banner": {
+      "type": "subscribe-banner",
+      "settings": {}
+    },
+    "cross-sell": {
+      "type": "product-range",
+      "settings": {
+        "kicker": "Goes well with",
+        "heading": "Round out the order",
+        "subheading": "Free NZ shipping kicks in over $79 — a second refill usually gets you there.",
+        "columns": "3",
+        "show_bundle_nudge": true,
+        "soft_background": true
+      }
+    }
+  },
+  "order": ["main", "subscribe-banner", "cross-sell"]
+}

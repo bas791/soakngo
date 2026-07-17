@@ -1,0 +1,28 @@
+{%- comment -%}
+  Price display for a product.
+  Usage: {% render 'price', product: product, show_per_litre: true %}
+  Per-litre value uses the soakngo.volume_litres metafield (see METAFIELDS.md).
+{%- endcomment -%}
+{%- liquid
+  assign target_variant = product.selected_or_first_available_variant
+  assign litres = product.metafields.soakngo.volume_litres.value
+-%}
+<span class="price-wrap">
+  {%- if product.compare_at_price > product.price -%}
+    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+    <span class="price--compare">{{ product.compare_at_price | money }}</span>
+    <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+  {%- endif -%}
+  <span class="price">
+    {%- if product.price_varies -%}
+      {%- assign from_price = product.price_min | money -%}
+      {{ 'products.product.from_price' | t: price: from_price }}
+    {%- else -%}
+      {{ product.price | money }}
+    {%- endif -%}
+  </span>
+  {%- if show_per_litre and litres and litres > 0 -%}
+    {%- assign per_litre = target_variant.price | divided_by: litres | money -%}
+    <span class="price-per-litre">{{ 'products.product.per_litre' | t: price: per_litre }}</span>
+  {%- endif -%}
+</span>

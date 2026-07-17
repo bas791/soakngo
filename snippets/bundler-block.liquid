@@ -1,0 +1,18 @@
+{%- comment -%}
+  BUNDLER APP INTEGRATION BLOCK — product page.
+  The Bundler app (bundler.app) injects its multi-buy widget into the
+  container below (it targets the product form area; the explicit
+  .bundler-target div gives it a stable, styled home so the offer looks
+  native). Discount tiers are configured in the Bundler admin — the note
+  underneath is display-only and set in Theme settings → Bundles.
+  Usage: {% render 'bundler-block', product: product %}
+{%- endcomment -%}
+<div class="bundler-block" data-bundler-product-id="{{ product.id }}">
+  <div class="bundler-target" id="bundler-widget-{{ product.id }}"></div>
+  {%- if settings.show_bundle_note and settings.bundle_note != blank -%}
+    <p class="bundler-block__note">
+      {% render 'icon', name: 'plus', size: 18 %}
+      {{ settings.bundle_note }}
+    </p>
+  {%- endif -%}
+</div>
