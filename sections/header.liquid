@@ -1,0 +1,119 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <button
+      type="button"
+      class="header-icon-btn site-header__menu-toggle"
+      data-drawer-open="MenuDrawer"
+      aria-label="{{ 'accessibility.menu' | t }}"
+      aria-haspopup="dialog"
+    >
+      {% render 'icon', name: 'menu', size: 24 %}
+    </button>
+
+    <a href="{{ routes.root_url }}" class="site-header__logo">
+      {%- if section.settings.logo != blank -%}
+        <img
+          src="{{ section.settings.logo | image_url: width: 300 }}"
+          srcset="{{ section.settings.logo | image_url: width: 300 }} 1x, {{ section.settings.logo | image_url: width: 600 }} 2x"
+          width="{{ section.settings.logo.width }}"
+          height="{{ section.settings.logo.height }}"
+          alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+        >
+      {%- else -%}
+        Soak<span class="logo-go">&nbsp;n&nbsp;Go</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="site-header__actions">
+      {%- if section.settings.show_search -%}
+        <a href="{{ routes.search_url }}" class="header-icon-btn" aria-label="{{ 'accessibility.search' | t }}">
+          {% render 'icon', name: 'search', size: 22 %}
+        </a>
+      {%- endif -%}
+      {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header-icon-btn" aria-label="{{ 'customer.account.title' | t }}">
+          {% render 'icon', name: 'account', size: 22 %}
+        </a>
+      {%- endif -%}
+      {%- if settings.cart_type == 'drawer' and request.page_type != 'cart' -%}
+        <button type="button" class="header-icon-btn" data-drawer-open="CartDrawer" data-cart-count-label aria-label="{{ 'accessibility.cart' | t }}" aria-haspopup="dialog">
+          {% render 'icon', name: 'cart', size: 22 %}
+          <span class="cart-count-bubble" data-cart-count>{%- if cart.item_count > 0 -%}{{ cart.item_count }}{%- endif -%}</span>
+        </button>
+      {%- else -%}
+        <a href="{{ routes.cart_url }}" class="header-icon-btn" data-cart-count-label aria-label="{{ 'accessibility.cart' | t }}">
+          {% render 'icon', name: 'cart', size: 22 %}
+          <span class="cart-count-bubble" data-cart-count>{%- if cart.item_count > 0 -%}{{ cart.item_count }}{%- endif -%}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</header>
+
+<drawer-element class="menu-drawer" id="MenuDrawer" role="dialog" aria-modal="true" aria-label="{{ 'accessibility.menu' | t }}" aria-hidden="true">
+  <button type="button" class="drawer__overlay" tabindex="-1" aria-label="{{ 'accessibility.close' | t }}" data-drawer-close></button>
+  <div class="drawer__panel">
+    <div class="drawer__header">
+      <span class="drawer__title">{{ 'accessibility.menu' | t }}</span>
+      <button type="button" class="header-icon-btn" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon', name: 'close', size: 24 %}
+      </button>
+    </div>
+    <nav class="drawer__body menu-drawer__nav" aria-label="Mobile navigation">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- if link.links.size > 0 -%}
+          <div class="menu-drawer__sub">
+            {%- for child in link.links -%}
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    <div class="drawer__footer">
+      <div class="trust-strip">
+        {%- if settings.badge_1 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'pin', size: 16 %}{{ settings.badge_1 }}</span>{%- endif -%}
+        {%- if settings.badge_2 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'leaf', size: 16 %}{{ settings.badge_2 }}</span>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</drawer-element>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Leave blank to use the styled text wordmark."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search icon",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account icon",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

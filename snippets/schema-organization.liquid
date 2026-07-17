@@ -1,0 +1,41 @@
+{%- comment -%} Organization + WebSite structured data, output on the homepage only. {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  "url": {{ request.origin | append: '/' | json }},
+  "description": "Soak n Go is a New Zealand-made DIY exterior cleaner for houses, fences, decks, paths and roofs. No acid, no bleach, no scrub, no rinse. Made by Maximum Wash Ltd, a professional exterior cleaning company.",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Maximum Wash Ltd"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "NZ"
+  },
+  "sameAs": [
+    {%- assign socials = '' -%}
+    {%- if settings.social_facebook != blank -%}{%- assign socials = socials | append: settings.social_facebook | append: '|' -%}{%- endif -%}
+    {%- if settings.social_instagram != blank -%}{%- assign socials = socials | append: settings.social_instagram | append: '|' -%}{%- endif -%}
+    {%- if settings.social_youtube != blank -%}{%- assign socials = socials | append: settings.social_youtube | append: '|' -%}{%- endif -%}
+    {%- assign social_list = socials | split: '|' -%}
+    {%- for social in social_list -%}
+      {{ social | json }}{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ shop.name | json }},
+  "url": {{ request.origin | append: '/' | json }},
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {{ request.origin | append: '/search?q={search_term_string}' | json }},
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>

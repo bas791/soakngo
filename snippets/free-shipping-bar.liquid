@@ -1,0 +1,31 @@
+{%- comment -%}
+  Free-shipping progress bar. Threshold set in Theme settings → Cart.
+  Updates live via the cart:updated event in theme.js.
+{%- endcomment -%}
+{%- liquid
+  assign threshold_cents = settings.free_shipping_threshold | default: 0 | times: 100
+-%}
+{%- if threshold_cents > 0 -%}
+  {%- assign remaining = threshold_cents | minus: cart.total_price -%}
+  <free-shipping-bar
+    class="free-shipping-bar"
+    data-threshold="{{ threshold_cents }}"
+    data-total="{{ cart.total_price }}"
+    data-progress-text="You're STRONG away from free NZ shipping"
+    data-unlocked-text="{{ 'cart.free_shipping_unlocked' | t | escape }}"
+    aria-live="polite"
+  >
+    <p class="free-shipping-bar__msg{% if remaining <= 0 %} is-unlocked{% endif %}">
+      {%- if remaining <= 0 -%}
+        <strong>{{ 'cart.free_shipping_unlocked' | t }}</strong>
+      {%- else -%}
+        {%- assign remaining_money = remaining | money -%}
+        {{ 'cart.free_shipping_progress' | t: amount: remaining_money }}
+      {%- endif -%}
+    </p>
+    <div class="free-shipping-bar__track" role="presentation">
+      {%- assign pct = cart.total_price | times: 100 | divided_by: threshold_cents | at_most: 100 -%}
+      <div class="free-shipping-bar__fill{% if remaining <= 0 %} is-unlocked{% endif %}" style="width: {{ pct }}%;"></div>
+    </div>
+  </free-shipping-bar>
+{%- endif -%}

@@ -1,0 +1,45 @@
+{%- comment -%}
+  SVG placeholder image, labelled with the shot that's needed.
+  Every placeholder rendered by this snippet is catalogued in ASSETS-NEEDED.md.
+  Usage:
+    {% render 'ph-image', label: 'HERO — sprayer clicked onto hose', ratio: '16x9', tone: 'navy' %}
+  ratio: '16x9' (default), '4x3', '1x1', '3x4', '2x3', '21x9'
+  tone: 'soft' (default, light) or 'navy' (dark)
+{%- endcomment -%}
+{%- liquid
+  assign r = ratio | default: '16x9'
+  assign parts = r | split: 'x'
+  assign rw = parts[0] | times: 100
+  assign rh = parts[1] | times: 100
+  assign t = tone | default: 'soft'
+  assign the_label = label | default: 'IMAGE PLACEHOLDER'
+-%}
+<svg
+  class="ph-image ph-image--{{ t }}"
+  viewBox="0 0 {{ rw }} {{ rh }}"
+  preserveAspectRatio="xMidYMid slice"
+  role="img"
+  aria-label="Placeholder image: {{ the_label | escape }}"
+>
+  {%- if t == 'navy' -%}
+    <rect width="{{ rw }}" height="{{ rh }}" fill="#1a3a5c"/>
+    <rect width="{{ rw }}" height="{{ rh }}" fill="url(#phlines-{{ rw }}-{{ rh }}-n)" opacity="0.35"/>
+    <defs>
+      <pattern id="phlines-{{ rw }}-{{ rh }}-n" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="28" stroke="#1e6fa8" stroke-width="1.5"/>
+      </pattern>
+    </defs>
+    <rect x="{{ rw | divided_by: 2 | minus: 220 }}" y="{{ rh | divided_by: 2 | minus: 42 }}" width="440" height="84" rx="10" fill="#1a3a5c" stroke="#f5c518" stroke-width="2"/>
+    <text x="{{ rw | divided_by: 2 }}" y="{{ rh | divided_by: 2 | plus: 8 }}" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f5c518">{{ the_label | escape | truncate: 38 }}</text>
+  {%- else -%}
+    <rect width="{{ rw }}" height="{{ rh }}" fill="#eaf1f7"/>
+    <rect width="{{ rw }}" height="{{ rh }}" fill="url(#phlines-{{ rw }}-{{ rh }}-s)" opacity="0.5"/>
+    <defs>
+      <pattern id="phlines-{{ rw }}-{{ rh }}-s" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="28" stroke="#d9e2ea" stroke-width="1.5"/>
+      </pattern>
+    </defs>
+    <rect x="{{ rw | divided_by: 2 | minus: 220 }}" y="{{ rh | divided_by: 2 | minus: 42 }}" width="440" height="84" rx="10" fill="#ffffff" stroke="#1a3a5c" stroke-width="2"/>
+    <text x="{{ rw | divided_by: 2 }}" y="{{ rh | divided_by: 2 | plus: 8 }}" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1a3a5c">{{ the_label | escape | truncate: 38 }}</text>
+  {%- endif -%}
+</svg>

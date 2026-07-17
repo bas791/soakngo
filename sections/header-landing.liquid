@@ -1,0 +1,40 @@
+{%- comment -%}
+  Stripped-down header for landing pages: logo + trust badges only.
+  No navigation, so paid traffic stays on the page and UTM params aren't leaked
+  through internal browsing before conversion.
+{%- endcomment -%}
+<header class="header-landing">
+  <div class="container header-landing__inner">
+    <a href="{{ routes.root_url }}" class="site-header__logo">
+      {%- if section.settings.logo != blank -%}
+        <img
+          src="{{ section.settings.logo | image_url: width: 300 }}"
+          width="{{ section.settings.logo.width }}"
+          height="{{ section.settings.logo.height }}"
+          alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+        >
+      {%- else -%}
+        Soak<span class="logo-go">&nbsp;n&nbsp;Go</span>
+      {%- endif -%}
+    </a>
+    <div class="trust-strip">
+      {%- if settings.badge_1 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'pin', size: 16 %}{{ settings.badge_1 }}</span>{%- endif -%}
+      {%- if settings.badge_2 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'leaf', size: 16 %}{{ settings.badge_2 }}</span>{%- endif -%}
+      {%- if settings.badge_3 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'shield', size: 16 %}{{ settings.badge_3 }}</span>{%- endif -%}
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Landing header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Leave blank to use the styled text wordmark."
+    }
+  ]
+}
+{% endschema %}

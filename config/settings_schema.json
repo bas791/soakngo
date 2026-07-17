@@ -1,0 +1,152 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Soak n Go",
+    "theme_version": "1.0.0",
+    "theme_author": "Soak n Go (Maximum Wash Ltd)",
+    "theme_documentation_url": "https://soakngo.co.nz",
+    "theme_support_url": "https://soakngo.co.nz"
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      { "type": "color", "id": "color_primary", "label": "Primary (navy)", "default": "#1a3a5c" },
+      { "type": "color", "id": "color_secondary", "label": "Secondary (mid blue)", "default": "#1e6fa8" },
+      { "type": "color", "id": "color_accent", "label": "Accent / CTA (yellow)", "info": "Reserved for calls to action and key highlights.", "default": "#f5c518" },
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#ffffff" },
+      { "type": "color", "id": "color_background_soft", "label": "Soft background", "default": "#f2f6fa" },
+      { "type": "color", "id": "color_text_soft", "label": "Soft text", "default": "#4a6076" },
+      { "type": "color", "id": "color_line", "label": "Lines and borders", "default": "#d9e2ea" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_webfonts",
+        "label": "Load webfonts (Barlow Condensed + Source Sans 3)",
+        "info": "When off, the theme uses fast system fonts only.",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "container_width",
+        "label": "Page width",
+        "min": 1100,
+        "max": 1440,
+        "step": 20,
+        "unit": "px",
+        "default": 1200
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          { "value": "drawer", "label": "Drawer" },
+          { "value": "page", "label": "Page" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold (NZD)",
+        "info": "Used by the free-shipping progress bar in the cart and drawer. Set to 0 to hide the bar. Must match your actual shipping settings.",
+        "default": 79
+      }
+    ]
+  },
+  {
+    "name": "Subscriptions",
+    "settings": [
+      {
+        "type": "text",
+        "id": "subscribe_label",
+        "label": "Subscription option label",
+        "default": "Subscribe &amp; Save"
+      },
+      {
+        "type": "text",
+        "id": "subscribe_reassurance",
+        "label": "Subscription reassurance line",
+        "info": "Shown everywhere the Subscribe &amp; Save toggle appears.",
+        "default": "Pause, skip or cancel anytime. No lock-in, no phone calls."
+      }
+    ]
+  },
+  {
+    "name": "Bundles (Bundler app)",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_bundle_note",
+        "label": "Show multi-buy note near Bundler blocks",
+        "info": "Display-only nudge. The actual discount tiers are configured in the Bundler app and render inside the marked integration blocks.",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bundle_note",
+        "label": "Multi-buy note",
+        "default": "Multi-buy: 2 bottles = 10% off &middot; 3+ = 15% off. Applied automatically."
+      }
+    ]
+  },
+  {
+    "name": "Trust badges",
+    "settings": [
+      { "type": "text", "id": "badge_1", "label": "Badge 1", "default": "NZ made &amp; owned" },
+      { "type": "text", "id": "badge_2", "label": "Badge 2", "default": "No acid, no bleach" },
+      { "type": "text", "id": "badge_3", "label": "Badge 3", "default": "Made by professional cleaners" },
+      { "type": "text", "id": "badge_4", "label": "Badge 4", "default": "Free NZ shipping over $79" }
+    ]
+  },
+  {
+    "name": "Guarantee",
+    "settings": [
+      {
+        "type": "text",
+        "id": "guarantee_heading",
+        "label": "Guarantee heading",
+        "default": "If it doesn't work, we'll make it right"
+      },
+      {
+        "type": "textarea",
+        "id": "guarantee_text",
+        "label": "Guarantee text",
+        "default": "We wash buildings for a living, so we know what clean looks like. If Soak n Go doesn't shift it, get in touch and we'll sort you out."
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "social_facebook", "label": "Facebook URL" },
+      { "type": "url", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube URL" }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]

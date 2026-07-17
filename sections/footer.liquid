@@ -1,0 +1,134 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a href="{{ routes.root_url }}" class="site-header__logo" style="color:#fff; display:inline-block; margin-bottom: var(--space-3);">
+          Soak<span class="logo-go" style="color: var(--color-accent);">&nbsp;n&nbsp;Go</span>
+        </a>
+        <p>{{ section.settings.blurb }}</p>
+        <div class="trust-strip" style="margin-top: var(--space-4);">
+          {%- if settings.badge_1 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'pin', size: 16 %}{{ settings.badge_1 }}</span>{%- endif -%}
+          {%- if settings.badge_2 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'leaf', size: 16 %}{{ settings.badge_2 }}</span>{%- endif -%}
+          {%- if settings.badge_3 != blank -%}<span class="trust-strip__item">{% render 'icon', name: 'shield', size: 16 %}{{ settings.badge_3 }}</span>{%- endif -%}
+        </div>
+      </div>
+
+      <div>
+        <h3>{{ section.settings.menu_1_heading }}</h3>
+        <ul>
+          {%- for link in section.settings.menu_1.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div>
+        <h3>{{ section.settings.menu_2_heading }}</h3>
+        <ul>
+          {%- for link in section.settings.menu_2.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div>
+        <h3>{{ section.settings.newsletter_heading }}</h3>
+        <p class="small" style="color: rgba(255,255,255,0.75);">{{ section.settings.newsletter_text }}</p>
+        {%- form 'customer', class: 'newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="field">
+            <label class="visually-hidden" for="FooterNewsletterEmail">{{ 'newsletter.label' | t }}</label>
+            <input
+              id="FooterNewsletterEmail"
+              type="email"
+              name="contact[email]"
+              class="input"
+              value="{{ form.email }}"
+              placeholder="{{ 'newsletter.placeholder' | t }}"
+              required
+              autocomplete="email"
+            >
+          </div>
+          <button type="submit" class="btn btn--primary">{{ 'newsletter.submit' | t }}</button>
+          {%- if form.posted_successfully? -%}
+            <p class="form-status form-status--success" style="flex-basis:100%;">{{ 'newsletter.success' | t }}</p>
+          {%- elsif form.errors -%}
+            <p class="form-status form-status--error" style="flex-basis:100%;">{{ 'newsletter.error' | t }}</p>
+          {%- endif -%}
+        {%- endform -%}
+        {%- if settings.social_facebook != blank or settings.social_instagram != blank or settings.social_youtube != blank -%}
+          <ul style="display:flex; gap: var(--space-4); margin-top: var(--space-4);">
+            {%- if settings.social_facebook != blank -%}<li><a href="{{ settings.social_facebook }}">{{ 'general.social.facebook' | t }}</a></li>{%- endif -%}
+            {%- if settings.social_instagram != blank -%}<li><a href="{{ settings.social_instagram }}">{{ 'general.social.instagram' | t }}</a></li>{%- endif -%}
+            {%- if settings.social_youtube != blank -%}<li><a href="{{ settings.social_youtube }}">{{ 'general.social.youtube' | t }}</a></li>{%- endif -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} · {{ section.settings.company_line }}</span>
+      <span>
+        {%- for policy in shop.policies -%}
+          {%- if policy != blank -%}<a href="{{ policy.url }}" style="margin-left: var(--space-3);">{{ policy.title }}</a>{%- endif -%}
+        {%- endfor -%}
+      </span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "blurb",
+      "label": "Brand blurb",
+      "default": "NZ-made DIY exterior cleaner. No acid, no bleach, no scrub, no rinse. Soak once, walk away — the weather does the work."
+    },
+    {
+      "type": "text",
+      "id": "menu_1_heading",
+      "label": "Menu 1 heading",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu 1",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_heading",
+      "label": "Menu 2 heading",
+      "default": "Help"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu 2",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "The spring reminder"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter text",
+      "default": "One email each spring to remind you it's soak time, plus the occasional deal. No spam — we're too busy washing buildings."
+    },
+    {
+      "type": "text",
+      "id": "company_line",
+      "label": "Company line",
+      "default": "Made by Maximum Wash Ltd — professional exterior cleaners since forever o'clock."
+    }
+  ]
+}
+{% endschema %}

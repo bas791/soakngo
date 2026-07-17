@@ -1,0 +1,24 @@
+<footer class="footer-landing">
+  <div class="container">
+    <p>
+      &copy; {{ 'now' | date: '%Y' }} {{ shop.name }} · {{ section.settings.company_line }}
+      {%- for policy in shop.policies -%}
+        {%- if policy != blank %} · <a href="{{ policy.url }}">{{ policy.title }}</a>{% endif -%}
+      {%- endfor -%}
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Landing footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "company_line",
+      "label": "Company line",
+      "default": "Made in NZ by Maximum Wash Ltd"
+    }
+  ]
+}
+{% endschema %}

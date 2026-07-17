@@ -1,0 +1,216 @@
+{
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "menu": "Menu",
+    "cart": "Cart",
+    "cart_count": "{{ count }} items in cart",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
+    "next_slide": "Next",
+    "previous_slide": "Previous",
+    "before_after_handle": "Drag to compare before and after",
+    "search": "Search",
+    "loading": "Loading"
+  },
+  "general": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "Well, this page has been soaked clean off the internet.",
+      "link": "Shop Soak n Go"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search",
+      "submit": "Search",
+      "no_results": "No results for \"{{ terms }}\". Try \"house wash\", \"refill\" or \"concentrate\".",
+      "results_with_count": {
+        "one": "{{ count }} result for \"{{ terms }}\"",
+        "other": "{{ count }} results for \"{{ terms }}\""
+      }
+    },
+    "password_page": {
+      "opening_soon": "Opening soon",
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_note": "Soak n Go is nearly here. No acid, no bleach, no scrub, no rinse."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{ number }}"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "youtube": "YouTube"
+    }
+  },
+  "newsletter": {
+    "label": "Email address",
+    "placeholder": "you@example.co.nz",
+    "submit": "Sign up",
+    "success": "You're in. One reminder each spring, the odd deal, no spam.",
+    "error": "That email doesn't look right — have another crack."
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "empty_link": "Shop the range",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "view_cart": "View cart",
+    "continue_shopping": "Keep shopping",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "taxes_and_shipping": "GST included. Shipping calculated at checkout.",
+    "free_shipping_progress": "You're {{ amount }} away from free NZ shipping",
+    "free_shipping_unlocked": "Free NZ shipping unlocked — nice one.",
+    "subscription_note": "Subscription items renew automatically. Pause, skip or cancel anytime.",
+    "error_quantity": "Couldn't update the cart. Please try again."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "adding": "Adding…",
+      "added": "Added to cart",
+      "from_price": "From {{ price }}",
+      "per_litre": "{{ price }} / litre",
+      "covers_up_to": "Covers up to {{ area }} m²",
+      "one_time": "One-time purchase",
+      "subscribe_save": "Subscribe & Save",
+      "save_amount": "Save {{ amount }}",
+      "quantity": "Quantity",
+      "view_details": "View details",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "vendor": "Vendor"
+    }
+  },
+  "blogs": {
+    "article": {
+      "written_by": "By {{ author }}",
+      "read_more": "Read more",
+      "back_to_blog": "Back to all articles"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "message": "Message",
+      "submit": "Send message",
+      "success": "Got it — thanks. We'll come back to you within one working day."
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Account",
+      "details": "Account details",
+      "view_addresses": "View addresses",
+      "return": "Return to account",
+      "log_out": "Log out"
+    },
+    "login": {
+      "title": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "forgot_password": "Forgot your password?",
+      "submit": "Log in",
+      "create_account": "Create account",
+      "guest_title": "Continue as guest",
+      "guest_continue": "Continue"
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "subtext": "We'll email you a link to reset your password.",
+      "submit": "Send reset link",
+      "success": "If that email's in our system, a reset link is on its way.",
+      "cancel": "Cancel"
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Reset password"
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create account"
+    },
+    "activate_account": {
+      "title": "Activate account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Activate account",
+      "cancel": "Decline invitation"
+    },
+    "addresses": {
+      "title": "Your addresses",
+      "default": "Default",
+      "add_new": "Add a new address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country/region",
+      "province": "Province",
+      "zip": "Postal code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "save": "Save address",
+      "cancel": "Cancel",
+      "update": "Update address"
+    },
+    "orders": {
+      "title": "Order history",
+      "none": "You haven't placed any orders yet.",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfilment status",
+      "total": "Total"
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date": "Placed on {{ date }}",
+      "cancelled": "Order cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "billing_address": "Billing address",
+      "shipping_address": "Shipping address"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Here's your {{ value }} gift card for {{ shop }}",
+      "subtext": "Your gift card",
+      "shop_link": "Start shopping",
+      "print": "Print",
+      "remaining": "{{ balance }} left",
+      "expired": "Expired"
+    }
+  }
+}
