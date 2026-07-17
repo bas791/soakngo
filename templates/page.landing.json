@@ -1,0 +1,34 @@
+{
+  "layout": "theme.landing",
+  "sections": {
+    "hero": {
+      "type": "landing-hero",
+      "blocks": {
+        "point-1": { "type": "point", "settings": { "text": "No bleach, no acid, no fumes" } },
+        "point-2": { "type": "point", "settings": { "text": "No scrubbing, no rinsing, no mixing" } },
+        "point-3": { "type": "point", "settings": { "text": "Made by NZ professional exterior cleaners" } }
+      },
+      "block_order": ["point-1", "point-2", "point-3"],
+      "settings": {}
+    },
+    "trust": {
+      "type": "trust-badges",
+      "settings": {}
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "blocks": {
+        "step-1": { "type": "step", "settings": { "heading": "Click on", "text": "Click the sprayer straight onto any garden hose. No mixing, no measuring, no gear." } },
+        "step-2": { "type": "step", "settings": { "heading": "Soak", "text": "Soak the surface until it's properly wet. That's the whole job." } },
+        "step-3": { "type": "step", "settings": { "heading": "Walk away", "text": "The weather does the slow work. Moss, mould and grime fade over the following weeks." } }
+      },
+      "block_order": ["step-1", "step-2", "step-3"],
+      "settings": { "soft_background": true }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "trust", "how-it-works", "cta"]
+}

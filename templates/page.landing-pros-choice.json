@@ -1,0 +1,109 @@
+{
+  "layout": "theme.landing",
+  "sections": {
+    "hero": {
+      "type": "landing-hero",
+      "blocks": {
+        "point-1": { "type": "point", "settings": { "text": "Made by Maximum Wash — around 20 pros washing buildings across Auckland, Tauranga and Christchurch" } },
+        "point-2": { "type": "point", "settings": { "text": "The same approach we use on commercial exteriors, sized for your place" } },
+        "point-3": { "type": "point", "settings": { "text": "No acid, no bleach, no scrub, no rinse" } }
+      },
+      "block_order": ["point-1", "point-2", "point-3"],
+      "settings": {
+        "kicker": "Best house wash, according to people who wash houses",
+        "heading": "The pro's choice.",
+        "subheading": "We wash buildings for a living. Soak n Go is the product we'd use at home — and now you can too.",
+        "cta_label": "Shop Soak n Go",
+        "under_cta": "If it doesn't work, we'll make it right — we know what clean looks like",
+        "placeholder_label": "HERO — Maximum Wash crew on site"
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "kicker": "Who's behind it",
+        "heading": "We wash buildings for a living",
+        "content": "<p>Maximum Wash Ltd cleans exteriors all day, every day — houses, apartment blocks, commercial buildings. After enough years watching supermarket products under-deliver, we made the one we'd actually use at home: gentle on the building and the garden, brutal on moss, mould and grime, and designed so the weather does the labour instead of you.</p><p>Soak n Go is that product. Professional thinking, hose-end simple.</p>",
+        "placeholder_label": "PHOTO — crew washing a building",
+        "cta_label": "",
+        "flip": false
+      }
+    },
+    "values": {
+      "type": "multicolumn",
+      "blocks": {
+        "col-1": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "heading": "Pro-grade thinking",
+            "text": "Formulated by people who answer for the results on someone else's building every single day."
+          }
+        },
+        "col-2": {
+          "type": "column",
+          "settings": {
+            "icon": "pin",
+            "heading": "NZ made & owned",
+            "text": "Formulated, bottled and shipped here, for NZ weatherboard, NZ moss and NZ weather."
+          }
+        },
+        "col-3": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "heading": "Nothing nasty",
+            "text": "No acid, no bleach, no chlorine. A professional-grade active that works with the weather — full directions on every label."
+          }
+        }
+      },
+      "block_order": ["col-1", "col-2", "col-3"],
+      "settings": {
+        "kicker": "Why trust us",
+        "heading": "What the pros optimise for",
+        "columns": "3",
+        "soft_background": true
+      }
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "blocks": {
+        "row-1": { "type": "row", "settings": { "label": "Made by professional exterior cleaners", "us": "tick", "a": "cross", "b": "cross" } },
+        "row-2": { "type": "row", "settings": { "label": "No mixing — clicks onto the hose", "us": "tick", "a": "cross", "b": "cross" } },
+        "row-3": { "type": "row", "settings": { "label": "No bleach, no acid", "us": "tick", "a": "cross", "b": "tick" } },
+        "row-4": { "type": "row", "settings": { "label": "NZ made & owned", "us": "tick", "a": "text", "a_text": "Varies", "b": "text", "b_text": "Varies" } },
+        "row-5": { "type": "row", "settings": { "label": "Subscribe & Save so you never run out", "us": "tick", "a": "cross", "b": "cross" } }
+      },
+      "block_order": ["row-1", "row-2", "row-3", "row-4", "row-5"],
+      "settings": {
+        "kicker": "Side by side",
+        "heading": "Soak n Go vs the others",
+        "subheading": "",
+        "soft_background": false,
+        "cta_label": "Shop the range",
+        "cta_primary": true
+      }
+    },
+    "guarantee": {
+      "type": "rich-text",
+      "settings": {
+        "kicker": "The guarantee",
+        "heading": "If it doesn't work, we'll make it right",
+        "content": "<p>We wash buildings for a living, so we know what clean looks like — and what it doesn't. If Soak n Go doesn't shift it, get in touch and we'll sort you out.</p>",
+        "cta_label": "",
+        "centre": true,
+        "soft_background": true
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "kicker": "Ready when you are",
+        "heading": "Wash it like a pro. Without doing any washing.",
+        "cta_label": "Shop Soak n Go",
+        "navy_style": true
+      }
+    }
+  },
+  "order": ["hero", "story", "values", "comparison", "guarantee", "cta"]
+}

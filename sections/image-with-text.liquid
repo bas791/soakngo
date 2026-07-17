@@ -1,0 +1,53 @@
+<section class="section{% if section.settings.soft_background %} section--soft{% endif %}">
+  <div class="container">
+    <div class="grid grid--2" style="align-items: center;{% if section.settings.flip %} direction: rtl;{% endif %}">
+      <div class="media-frame" style="aspect-ratio: 4/3;{% if section.settings.flip %} direction: ltr;{% endif %}">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            srcset="{{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+            sizes="(min-width: 750px) 48vw, 100vw"
+            width="1200" height="900" loading="lazy"
+            alt="{{ section.settings.image.alt | escape }}"
+          >
+        {%- else -%}
+          {% render 'ph-image', label: section.settings.placeholder_label, ratio: '4x3' %}
+        {%- endif -%}
+      </div>
+      <div{% if section.settings.flip %} style="direction: ltr;"{% endif %}>
+        {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+        <h2 style="margin-bottom: var(--space-4);">{{ section.settings.heading }}</h2>
+        <div>{{ section.settings.content }}</div>
+        {%- if section.settings.cta_label != blank -%}
+          <p style="margin-top: var(--space-5);">
+            <a href="{{ section.settings.cta_link }}" class="btn {% if section.settings.cta_primary %}btn--primary{% else %}btn--secondary{% endif %}">{{ section.settings.cta_label }}</a>
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "placeholder_label", "label": "Placeholder label", "default": "PHOTO — crew washing a building" },
+    { "type": "checkbox", "id": "flip", "label": "Image on the right", "default": false },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We wash buildings for a living" },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Soak n Go is made by Maximum Wash Ltd — a professional exterior cleaning company with around 20 staff across Auckland, Tauranga and Christchurch. This is the product we'd use at home.</p>"
+    },
+    { "type": "text", "id": "cta_label", "label": "Button label" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "checkbox", "id": "cta_primary", "label": "Yellow button", "default": false },
+    { "type": "checkbox", "id": "soft_background", "label": "Soft background", "default": false }
+  ],
+  "presets": [{ "name": "Image with text" }]
+}
+{% endschema %}

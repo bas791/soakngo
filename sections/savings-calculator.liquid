@@ -1,0 +1,94 @@
+{%- comment -%}
+  Subscribe & Save savings calculator ("Never run out" landing page).
+  Annual dollar savings = product price × discount % × deliveries per year.
+  Price comes from the selected product; the discount percentage is a
+  setting and must match the selling plan configured in the subscription app.
+{%- endcomment -%}
+{%- liquid
+  assign calc_product = section.settings.product
+  assign price_cents = section.settings.fallback_price | times: 100
+  if calc_product != blank
+    assign price_cents = calc_product.price
+  endif
+-%}
+<section class="section{% if section.settings.navy_style %} section--navy{% endif %}">
+  <div class="container container--narrow">
+    <div class="section-head section-head--center">
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="lede">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <savings-calculator
+      class="calc{% if section.settings.navy_style %} calc--navy{% endif %}"
+      data-price="{{ price_cents }}"
+      data-discount-pct="{{ section.settings.discount_pct }}"
+    >
+      <div class="calc__row">
+        <div class="field">
+          <label for="SavingsFrequency-{{ section.id }}">{{ section.settings.input_label }}</label>
+          <select id="SavingsFrequency-{{ section.id }}" class="input" data-savings-frequency>
+            <option value="2">Twice a year</option>
+            <option value="3">Every 4 months</option>
+            <option value="4" selected>Every 3 months</option>
+            <option value="6">Every 2 months</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc__result" aria-live="polite">
+        <p class="calc__result-headline">
+          You'd save <span data-savings-output>$0.00</span> a year
+        </p>
+        <p>
+          That's <span data-savings-count>4</span> deliveries at {{ section.settings.discount_pct }}% off
+          {%- if calc_product != blank %} the {{ calc_product.title }}{% endif -%}
+          , turning up before you run out. {{ settings.subscribe_reassurance }}
+        </p>
+        {%- if section.settings.cta_label != blank -%}
+          {%- assign cta_url = section.settings.cta_link -%}
+          {%- if cta_url == blank and calc_product != blank -%}{%- assign cta_url = calc_product.url -%}{%- endif -%}
+          <a href="{{ cta_url }}" class="btn btn--primary">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+      </div>
+    </savings-calculator>
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="compare-note text-center">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Savings calculator",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Do the numbers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What does never running out save you?" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Pick a delivery rhythm and see the annual saving in actual dollars — not marketing percentages." },
+    { "type": "text", "id": "input_label", "label": "Input label", "default": "How often do you want a refill?" },
+    { "type": "product", "id": "product", "label": "Product (for pricing)", "info": "Usually the 2L Refill." },
+    {
+      "type": "number",
+      "id": "fallback_price",
+      "label": "Fallback price (NZD)",
+      "info": "Used until a product is selected.",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "discount_pct",
+      "label": "Subscription discount %",
+      "info": "Must match the selling plan configured in your subscription app.",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "default": 15
+    },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Start Subscribe & Save" },
+    { "type": "url", "id": "cta_link", "label": "Button link", "info": "Defaults to the selected product." },
+    { "type": "text", "id": "footnote", "label": "Footnote", "default": "Savings shown are indicative, based on the current one-time price and your chosen frequency." },
+    { "type": "checkbox", "id": "navy_style", "label": "Navy style", "default": false }
+  ],
+  "presets": [{ "name": "Savings calculator" }]
+}
+{% endschema %}

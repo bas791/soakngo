@@ -1,0 +1,33 @@
+<section class="section{% if section.settings.navy_style %} section--navy{% else %} section--soft{% endif %}">
+  <div class="container container--narrow text-center">
+    {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}
+      <p class="lede" style="margin: var(--space-3) auto var(--space-5);">{{ section.settings.text }}</p>
+    {%- endif -%}
+    {%- if section.settings.cta_label != blank -%}
+      <p>
+        <a href="{{ section.settings.cta_link }}" class="btn btn--primary btn--large">{{ section.settings.cta_label }}</a>
+      </p>
+    {%- endif -%}
+    {%- if section.settings.under_cta != blank -%}
+      <p class="small muted" style="margin-top: var(--space-3);">{{ section.settings.under_cta }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA banner",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Soak once. Walk away." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "The weather's going to be working on your house either way. Put it on the payroll." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Shop Soak n Go" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "text", "id": "under_cta", "label": "Line under the button", "default": "Free NZ shipping over $79 · If it doesn't work, we'll make it right" },
+    { "type": "checkbox", "id": "navy_style", "label": "Navy style", "default": true }
+  ],
+  "presets": [{ "name": "CTA banner" }]
+}
+{% endschema %}

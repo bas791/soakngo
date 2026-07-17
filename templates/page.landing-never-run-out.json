@@ -1,0 +1,77 @@
+{
+  "layout": "theme.landing",
+  "sections": {
+    "hero": {
+      "type": "landing-hero",
+      "blocks": {
+        "point-1": { "type": "point", "settings": { "text": "Save on every single delivery — in dollars, not fine print" } },
+        "point-2": { "type": "point", "settings": { "text": "Turns up before the green stuff does" } },
+        "point-3": { "type": "point", "settings": { "text": "Pause, skip or cancel anytime from your email" } }
+      },
+      "block_order": ["point-1", "point-2", "point-3"],
+      "settings": {
+        "kicker": "Subscribe & Save on the 2L Refill",
+        "heading": "Never run out.",
+        "subheading": "The houses that always look freshly washed aren't washed more often — they're soaked on a rhythm. Put your refills on autopilot and the place never gets a chance to go green.",
+        "cta_label": "Start Subscribe & Save",
+        "under_cta": "No lock-in, no phone calls, no \"retention specialists\"",
+        "placeholder_label": "HERO — 2L refill bottle at the front door"
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "settings": {}
+    },
+    "savings": {
+      "type": "savings-calculator",
+      "settings": {}
+    },
+    "cadence": {
+      "type": "multicolumn",
+      "blocks": {
+        "col-1": {
+          "type": "column",
+          "settings": {
+            "icon": "clock",
+            "heading": "Pick your rhythm",
+            "text": "Most Kiwi homes do well on a refill every 3 months — shady or coastal places every 2. Change it whenever you like."
+          }
+        },
+        "col-2": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "heading": "It just turns up",
+            "text": "Each refill lands at your door before you've thought about it. You get an email before every charge, every time."
+          }
+        },
+        "col-3": {
+          "type": "column",
+          "settings": {
+            "icon": "refresh",
+            "heading": "Cancel like an adult",
+            "text": "Pause, skip a delivery or cancel from a link in your email in about ten seconds. No hoops. No hostage negotiation."
+          }
+        }
+      },
+      "block_order": ["col-1", "col-2", "col-3"],
+      "settings": {
+        "kicker": "How it works",
+        "heading": "Set it, forget it, stay immaculate",
+        "columns": "3",
+        "soft_background": true
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "kicker": "Autopilot on",
+        "heading": "Your house, permanently sorted",
+        "text": "Start with the refill on Subscribe & Save. Cheaper every time, and it never lets you run out mid-spring.",
+        "cta_label": "Start Subscribe & Save",
+        "navy_style": true
+      }
+    }
+  },
+  "order": ["hero", "trust", "savings", "cadence", "cta"]
+}

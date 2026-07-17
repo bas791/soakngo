@@ -1,0 +1,85 @@
+{%- comment -%}
+  Landing page hero: one job per page, one primary CTA.
+  Problem/agitate/solve structure starts here — the heading states the
+  problem or promise, the tick list agitates/reassures, the single CTA solves.
+{%- endcomment -%}
+<section class="landing-hero{% if section.settings.navy_style %} section--navy{% endif %}">
+  <div class="container landing-hero__inner">
+    <div>
+      {%- if section.settings.kicker != blank -%}<p class="kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+      <h1 class="display">{{ section.settings.heading }}</h1>
+      <p class="lede">{{ section.settings.subheading }}</p>
+      {%- if section.blocks.size > 0 -%}
+        <ul class="tick-list" style="margin-block: var(--space-5); max-width: 32rem;">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>{% render 'icon', name: 'tick', size: 16 %}{{ block.settings.text }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if section.settings.cta_label != blank -%}
+        <p>
+          <a href="{{ section.settings.cta_link }}" class="btn btn--primary btn--large">{{ section.settings.cta_label }}</a>
+        </p>
+      {%- endif -%}
+      {%- if section.settings.under_cta != blank -%}
+        <p class="small muted" style="margin-top: var(--space-3);">{{ section.settings.under_cta }}</p>
+      {%- endif -%}
+    </div>
+    <div class="landing-hero__media media-frame">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          srcset="{{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+          sizes="(min-width: 900px) 48vw, 100vw"
+          width="1200" height="900"
+          alt="{{ section.settings.image.alt | escape }}"
+          fetchpriority="high"
+        >
+      {%- else -%}
+        {% render 'ph-image', label: section.settings.placeholder_label, ratio: '4x3' %}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing hero",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "NZ-made exterior cleaner" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ditch the bleach." },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "There's a better way to deal with moss and mould than dousing your house in bleach every spring."
+    },
+    { "type": "text", "id": "cta_label", "label": "Primary button label", "default": "Shop Soak n Go" },
+    { "type": "url", "id": "cta_link", "label": "Primary button link" },
+    { "type": "text", "id": "under_cta", "label": "Line under the button", "default": "Free NZ shipping over $79 · If it doesn't work, we'll make it right" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "placeholder_label", "label": "Placeholder label", "default": "HERO — sprayer on hose, house behind" },
+    { "type": "checkbox", "id": "navy_style", "label": "Navy style", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Tick point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "No bleach, no acid, no fumes" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Landing hero",
+      "blocks": [
+        { "type": "point", "settings": { "text": "No bleach, no acid, no fumes" } },
+        { "type": "point", "settings": { "text": "No scrubbing, no rinsing, no mixing" } },
+        { "type": "point", "settings": { "text": "Made by NZ professional exterior cleaners" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
