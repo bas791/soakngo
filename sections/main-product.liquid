@@ -216,13 +216,13 @@
                       {%- if variant.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
                     </span>
                   </button>
+                  {%- if block.settings.show_express -%}
+                    <div class="additional-checkout-buttons" aria-label="Express checkout">
+                      {{ form | payment_button }}
+                    </div>
+                  {%- endif -%}
                 {%- endform -%}
               </product-form>
-              {%- if block.settings.show_express -%}
-                <div class="additional-checkout-buttons" aria-label="Express checkout">
-                  {{ content_for_additional_checkout_buttons }}
-                </div>
-              {%- endif -%}
             </div>
 
           {%- when 'coverage_calc' -%}

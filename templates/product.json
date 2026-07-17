@@ -86,10 +86,36 @@
     },
     "product-faq": {
       "type": "faq",
+      "blocks": {
+        "q-1": {
+          "type": "question",
+          "settings": {
+            "question": "Do I really not have to rinse?",
+            "answer": "<p>Really. The label says DO NOT rinse off — the product needs to stay put so the weather can work on it. Soak, walk away, get on with your weekend.</p>"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "When should I apply it?",
+            "answer": "<p>A dry, overcast, still day, onto a dry surface, with no rain expected for 12 hours. Working on a house? Spray from the ground up.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>It works over time with weather action — growth browns off and washes away over the following weeks. Stubborn stains in sheltered spots can take a few months. Slow is the point: that's why it lasts.</p>"
+          }
+        }
+      },
+      "block_order": ["q-1", "q-2", "q-3"],
       "settings": {
         "kicker": "Good questions",
         "heading": "Before you ask",
-        "enable_schema": false
+        "enable_schema": false,
+        "cta_label": "All questions answered",
+        "cta_link": "/pages/faq"
       }
     },
     "cross-sell": {

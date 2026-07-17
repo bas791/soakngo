@@ -1,11 +1,13 @@
 <div class="container account-page">
   <p><a href="{{ routes.account_url }}" class="link-arrow">{{ 'customer.account.return' | t }}</a></p>
   <h1 style="margin-block: var(--space-4);">{{ 'customer.order.title' | t: name: order.name }}</h1>
-  <p class="muted">{{ 'customer.order.date' | t: date: order.created_at | date: '%-d %B %Y' }}</p>
+  {%- assign order_date = order.created_at | date: '%-d %B %Y' -%}
+  <p class="muted">{{ 'customer.order.date' | t: date: order_date }}</p>
 
   {%- if order.cancelled -%}
     <div class="form-status form-status--error" style="margin-top: var(--space-4);">
-      <p>{{ 'customer.order.cancelled' | t: date: order.cancelled_at | date: '%-d %B %Y' }}</p>
+      {%- assign cancelled_date = order.cancelled_at | date: '%-d %B %Y' -%}
+      <p>{{ 'customer.order.cancelled' | t: date: cancelled_date }}</p>
       <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
     </div>
   {%- endif -%}
